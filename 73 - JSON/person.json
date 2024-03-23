@@ -1,0 +1,7 @@
+{
+    "name": "max",
+    "age" : 30,
+    "iskerja" : false,
+    "hobi" : ["berenang", "mancing"]
+
+}

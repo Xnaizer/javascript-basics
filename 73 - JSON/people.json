@@ -1,0 +1,28 @@
+[{
+    "name": "max",
+    "age" : 30,
+    "iskerja" : false,
+    "hobi" : ["berenang", "mancing"]
+
+},
+{
+    "name": "bob",
+    "age" : 12,
+    "iskerja" : true,
+    "hobi" : ["terbang", "mancing"]
+
+},
+{
+    "name": "sandy",
+    "age" : 21,
+    "iskerja" : false,
+    "hobi" : ["tenggelam", "terbang"]
+
+},
+{
+    "name": "martin",
+    "age" : 30,
+    "iskerja" : false,
+    "hobi" : ["marah", "mancing"]
+
+}]
