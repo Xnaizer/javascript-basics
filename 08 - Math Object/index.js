@@ -4,7 +4,7 @@
 
 console.log(Math.PI)
 
-let x = 81;
+let x = 81.6;
 let y = 2;
 let z = 3.00001;
 

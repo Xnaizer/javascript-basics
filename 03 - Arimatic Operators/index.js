@@ -60,7 +60,7 @@ console.log(std1)
 
 
 /*
-  operator precedence
+  operator precedence(pioritas)
   1. paranthesis ()
   2. exponen atau pangkat
   3. multilication(perkalian), division (pembagian), modulo(modulus)

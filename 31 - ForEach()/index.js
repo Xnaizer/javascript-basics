@@ -10,12 +10,12 @@ num.forEach(display)
 // ini akan ngeprint semua elemen di dalam array kita
 
 function double(element, index, array){
-    array[index] = element *2;
+    array[index] = element * 2;
 
 }
 
 function cube(element, index, array){
-    array[index] = Math.pow (element , 2);
+    array[index] = Math.pow (element , 3);
 } // kubik atau pangkat 3
 
 
@@ -27,7 +27,7 @@ function display(element){
 
 let buah = ["apple", "orange", "banana","coconut"];
 
-buah.forEach(capitalize);
+buah.forEach(uppercase);
 buah.forEach(display);
 
 function uppercase(element, index, array){
