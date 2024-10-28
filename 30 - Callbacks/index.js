@@ -8,7 +8,7 @@
 
 //simple example
 function hello(varterserahmaoapa){
-    console.log("hello");
+    console.log("helloow");
     varterserahmaoapa(); // disini di callback
 }
 
@@ -17,7 +17,7 @@ function goodbye(){
 }
 
 function leave(){
-    console.log("leave")
+    console.log("leave me ke dua")
 }
 
 hello(leave);

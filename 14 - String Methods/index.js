@@ -1,6 +1,6 @@
 // string methods = allow you to manipulate and work with text (strings)
 
-let userName = "                    Xnaizerrre";
+let userName = "  Xnaizerrre";
 
 console.log(userName.charAt(0));
 // mengambil huruf yang ditentukan urutannya bermulai dari 0
@@ -15,10 +15,10 @@ console.log(userName.lastIndexOf("e"));
 console.log(userName.length)
 //menentukan panjang dari huruf
 
-console.log(userName.trim())
-console.log(userName.toUpperCase())
-console.log(userName.toLowerCase())
-console.log(userName.repeat(3))
+console.log(userName.trim())// meanghapus spasi
+console.log(userName.toUpperCase()) // uppercase
+console.log(userName.toLowerCase()) // lowercase
+console.log(userName.repeat(3)) // repeat
 
 let result = userName.startsWith(" ")
 console.log(result)
@@ -41,9 +41,13 @@ pnum = pnum.replaceAll("-","");
 console.log(pnum)
 
 let pnum1 = "121-213141-412";
-pnum1 = pnum1.padStart(18,"0");
+pnum1 = pnum1.padStart(18,"+62 ");
 console.log(pnum1)
 
 let pnum2= "121-213141-412";
 pnum2 = pnum2.padEnd(18,"0");
 console.log(pnum2)
+
+let pnum3 = "121-213141-412";
+pnum3 = pnum3.padStart(18,"+62 ").replaceAll("-","");
+console.log(pnum3)
