@@ -1,15 +1,4 @@
-Selain .map(), ada beberapa metode array lain yang sangat penting dan berguna dalam JavaScript, terutama ketika bekerja dengan array secara immutable (tidak mengubah array asli). Berikut beberapa metode yang perlu kamu ketahui:
 
-1. .filter()
-Digunakan untuk membuat array baru yang berisi elemen-elemen yang memenuhi kondisi tertentu.
-
-Contoh:
-
-javascript
-Copy code
-const numbers = [1, 2, 3, 4, 5];
-const evenNumbers = numbers.filter(num => num % 2 === 0);
-console.log(evenNumbers); // [2, 4]
 2. .reduce()
 Digunakan untuk mengurangi array menjadi satu nilai, misalnya untuk menjumlahkan nilai-nilai dalam array atau mengakumulasikan hasil dari suatu operasi.
 
@@ -20,19 +9,9 @@ Copy code
 const numbers = [1, 2, 3, 4, 5];
 const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 console.log(sum); // 15
-3. .find()
-Digunakan untuk menemukan elemen pertama dalam array yang memenuhi kondisi tertentu. Berbeda dengan filter, find hanya mengembalikan satu elemen.
 
-Contoh:
 
-javascript
-Copy code
-const products = [
-  { id: 1, name: 'Laptop' },
-  { id: 2, name: 'Phone' }
-];
-const product = products.find(product => product.id === 2);
-console.log(product); // { id: 2, name: 'Phone' }
+
 4. .some()
 Mengembalikan true jika setidaknya satu elemen dalam array memenuhi kondisi yang diberikan.
 

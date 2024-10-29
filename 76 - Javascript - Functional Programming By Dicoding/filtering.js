@@ -91,6 +91,8 @@ lihat? sekarang lebih mudah dipahami karna kamu tau kemana setiap kode diinisias
 
 */
 
+// membuat advance code untuk selective filter product
+
 const paraProduk = [
   { id: 'PO1', name: 'Laptop', category: 'Electronics', color: 'white', preorder: 'yes', price: 1200 },
   { id: 'PO2', name: 'Smartphone', category: 'Electronics', color: 'black', preorder: 'no', price: 800 },
@@ -128,6 +130,65 @@ console.log(cariProduk(paraProduk, prefiksId, 'Electronics', null, 'yes', 100, 1
 
 
 
+console.log("=".repeat(100));
+
+// membuat filter sederhana sesuai dengan categori yang diinginkan
+
+const keluargaSyah = [
+  { namanya : 'idih', umur : 12   , gender : 'perempuan'},
+  { namanya : 'kepo', umur : 32   , gender : 'laki'},
+  { namanya : 'kamu', umur : 19   , gender : 'perempuan'},
+  { namanya : 'yahh', umur : 16   , gender : 'laki'},
+  { namanya : 'tak', umur : 13    , gender : 'laki'},
+  { namanya : 'sayang', umur : 29 , gender : 'perempuan' },
+  { namanya : 'nanti', umur : 53  , gender : 'perempuan'},
+  { namanya : 'loh', umur : 33    , gender : 'laki'},
+  { namanya : 'gimana', umur : 23 , gender : 'laki'  }
+];
+ 
+function siapaKeluargaKamu (paraKeluarga , jenisKelamin){
+  return paraKeluarga.filter(item => item.gender === jenisKelamin);
+  
+};
+
+console.log(siapaKeluargaKamu(keluargaSyah, 'perempuan'));
 
 
+
+console.log("=".repeat(100));
+
+
+
+// filtering angka genap
+
+const angkas = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+
+const genapkan = angkas.filter(item => item % 2 === 0);
+
+
+console.log(genapkan);
+
+
+console.log("=".repeat(100));
+
+// filtering huruf tertentu
+
+const kataKata = ['apaya', 'miris','heran','mengapa','apple', 'banana', 'grape', 'cherry', 'mango'];
+
+const ambilKata = kataKata.filter(item => item.includes('a'));
+console.log(ambilKata)
+
+
+
+console.log("=".repeat(100));
+
+// filter menghilangkan array dengan angka yang sama
+
+const numbers = [1, 2, 3, 3, 4, 4, 5];
+
+const uniqueNumbers = numbers.filter((num, index, array) => array.indexOf(num) === index);
+console.log(uniqueNumbers);
+
+
+console.log("=".repeat(100));
 
