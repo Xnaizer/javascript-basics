@@ -1,27 +1,6 @@
 
-2. .reduce()
-Digunakan untuk mengurangi array menjadi satu nilai, misalnya untuk menjumlahkan nilai-nilai dalam array atau mengakumulasikan hasil dari suatu operasi.
-
-Contoh:
-
-javascript
-Copy code
-const numbers = [1, 2, 3, 4, 5];
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-console.log(sum); // 15
 
 
-
-4. .some()
-Mengembalikan true jika setidaknya satu elemen dalam array memenuhi kondisi yang diberikan.
-
-Contoh:
-
-javascript
-Copy code
-const numbers = [1, 2, 3, 4, 5];
-const hasEvenNumber = numbers.some(num => num % 2 === 0);
-console.log(hasEvenNumber); // true
 5. .every()
 Mengembalikan true jika semua elemen dalam array memenuhi kondisi yang diberikan.
 
