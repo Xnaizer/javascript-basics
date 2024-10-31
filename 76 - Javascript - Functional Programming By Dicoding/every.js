@@ -85,6 +85,8 @@ const validData = {
 
 // Fungsi untuk memeriksa apakah semua data sesuai
 const allDataCorrect = Object.keys(validData).every(key => userData[key] === validData[key]);
+// object.key() = function yang mengambil semua key yang ada pada suatu objek
+
 
 if (allDataCorrect) {
     console.log("Anda diperbolehkan masuk"); // Output jika semua data sesuai
@@ -92,6 +94,6 @@ if (allDataCorrect) {
     console.log("Data tidak valid, akses ditolak"); // Output jika ada yang tidak sesuai
 }
 
-console.log(allDataCorrect)
+
 
 console.log("=".repeat(100));
