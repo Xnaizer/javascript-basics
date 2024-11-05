@@ -11,6 +11,7 @@ function getProductsByCategory(products, category) {
  * TODO:
  * Gunakan metode array immutable untuk mengembalikan array produk yang termasuk dalam kategori yang diberikan.
  */
+   return products.filter(item => item.category === category)
 }
 
 function findProductById(products, id) {
@@ -18,6 +19,8 @@ function findProductById(products, id) {
  * TODO:
  * Gunakan metode array immutable untuk mengembalikan produk dengan ID yang cocok.
  */
+
+    
 }
 
 function calculateTotalPrice(products) {

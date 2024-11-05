@@ -23,7 +23,7 @@ const sampleProducts = [
 function hargaTerendahKeTinggi(produk){
     return produk.sort((a,b) => a.price - b.price);
 }
-
+    
 console.log(hargaTerendahKeTinggi(sampleProducts));
 
 

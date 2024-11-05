@@ -74,7 +74,7 @@ function penomoranIndex (produk){
     return produk.reduce((bebas, item, index)=>{
         console.log(`No. Produk ke-${index} Dengan Nama Item : ${item.name}`);
         return bebas
-    })
+    }, 'end')
 }
 
 console.log(penomoranIndex(totalProduk));

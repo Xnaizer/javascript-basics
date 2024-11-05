@@ -1,37 +1,8 @@
 
 
-6. .forEach()
-Digunakan untuk mengeksekusi fungsi pada setiap elemen dalam array. Berbeda dengan map, forEach tidak mengembalikan array baru.
-
-Contoh:
-
-javascript
-Copy code
-const numbers = [1, 2, 3, 4, 5];
-numbers.forEach(num => console.log(num * 2)); // 2, 4, 6, 8, 10
 
 
-8. .concat()
-Menggabungkan dua atau lebih array tanpa mengubah array aslinya.
 
-Contoh:
-
-javascript
-Copy code
-const array1 = [1, 2];
-const array2 = [3, 4];
-const result = array1.concat(array2);
-console.log(result); // [1, 2, 3, 4]
-9. .slice()
-Mengambil sebagian array (shallow copy) berdasarkan indeks awal dan akhir (tidak termasuk akhir).
-
-Contoh:
-
-javascript
-Copy code
-const numbers = [1, 2, 3, 4, 5];
-const sliced = numbers.slice(1, 4);
-console.log(sliced); // [2, 3, 4]
 10. .splice()
 Menambahkan, menghapus, atau mengganti elemen dalam array. Namun, ini mengubah array asli, jadi hati-hati jika ingin bekerja secara immutable.
 
