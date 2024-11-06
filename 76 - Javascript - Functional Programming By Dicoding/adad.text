@@ -3,16 +3,8 @@
 
 
 
-10. .splice()
-Menambahkan, menghapus, atau mengganti elemen dalam array. Namun, ini mengubah array asli, jadi hati-hati jika ingin bekerja secara immutable.
 
-Contoh (Menghapus elemen):
 
-javascript
-Copy code
-const numbers = [1, 2, 3, 4];
-numbers.splice(1, 2); // Hapus dua elemen dari indeks ke-1
-console.log(numbers); // [1, 4]
 11. .includes()
 Memeriksa apakah suatu array berisi elemen tertentu dan mengembalikan true atau false.
 
