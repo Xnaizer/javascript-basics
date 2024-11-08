@@ -20,6 +20,8 @@ function findProductById(products, id) {
  * Gunakan metode array immutable untuk mengembalikan produk dengan ID yang cocok.
  */
 
+  return products.find(item => item.id === id);
+
     
 }
 
@@ -28,17 +30,23 @@ function calculateTotalPrice(products) {
  * TODO:
  * Gunakan metode array immutable untuk menghitung total harga semua produk.
  */
+  return products.reduce((a,b) => a + b.price, 0)
 }
 
 function applyDiscount(products, discount) {
 /**
- * TODO:
- * Gunakan metode array immutable untuk mengembalikan array baru,
- * di mana setiap produk memiliki harga yang sudah dikurangi dengan diskon yang diberikan.
- */
+* TODO:
+* Gunakan metode array immutable untuk mengembalikan array baru,
+* di mana setiap produk memiliki harga yang sudah dikurangi dengan diskon yang diberikan.
+*/
+
+
+
+
+
 }
 
 console.log(getProductsByCategory(sampleProducts, 'Electronics')); // Should return products with id 1 and 2
 console.log(calculateTotalPrice(sampleProducts)); // Should return 1830
-console.log(applyDiscount(sampleProducts, 10)); // Should return products with prices reduced by 10%
+// console.log(applyDiscount(sampleProducts, 10)); // Should return products with prices reduced by 10%
 console.log(findProductById(sampleProducts, 3)); // Should return the product with id 3
