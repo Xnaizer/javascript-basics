@@ -40,13 +40,19 @@ function applyDiscount(products, discount) {
 * di mana setiap produk memiliki harga yang sudah dikurangi dengan diskon yang diberikan.
 */
 
+  return products.map(item => ({
+    ...item, price: item.price * (1 - discount / 100)
+  }),0);
 
 
 
-
-}
+};
 
 console.log(getProductsByCategory(sampleProducts, 'Electronics')); // Should return products with id 1 and 2
 console.log(calculateTotalPrice(sampleProducts)); // Should return 1830
-// console.log(applyDiscount(sampleProducts, 10)); // Should return products with prices reduced by 10%
+console.log(applyDiscount(sampleProducts, 10)); // Should return products with prices reduced by 10%
 console.log(findProductById(sampleProducts, 3)); // Should return the product with id 3
+
+
+
+

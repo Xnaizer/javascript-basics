@@ -65,21 +65,21 @@ console.log("=".repeat(100));
 const data = [
     { name: "Alice", age: 25, job: "Engineer" },
     { name: "Bob", age: 30, job: "Designer" },
-  ];
+];
   
-  const csv = [
-    ["Name", "Age", "Job"],
-    ...data.map(item => [item.name, item.age, item.job])
-  ]
-  .map(row => row.join(","))
-  .join("\n");
-  
-  console.log(csv);
-  // Output:
-  // Name,Age,Job
-  // Alice,25,Engineer
-  // Bob,30,Designer
-  
+const csv = [
+  ["Name", "Age", "Job"],
+  ...data.map(item => [item.name, item.age, item.job])
+]
+.map(row => row.join(","))
+.join("\n");
+
+console.log(csv);
+// Output:
+// Name,Age,Job
+// Alice,25,Engineer
+// Bob,30,Designer
+
 
 
 console.log("=".repeat(100));
