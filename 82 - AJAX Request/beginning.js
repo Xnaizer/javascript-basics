@@ -163,3 +163,43 @@
 // Ketergantungan pada pihak ketiga: Jika API bermasalah, aplikasi Anda juga bisa terganggu.
 // Keamanan: API yang tidak aman dapat menjadi titik kerentanan.
 // Batasan penggunaan: Beberapa API memiliki kuota atau biaya untuk penggunaan tertentu.
+
+// Status respons HTTP adalah kode numerik yang dikirim oleh server untuk menunjukkan hasil dari permintaan HTTP yang dilakukan oleh klien (misalnya, browser atau aplikasi). Status ini membantu klien memahami apakah permintaan berhasil, mengalami kesalahan, atau membutuhkan tindakan lebih lanjut.
+
+// Kategori Kode Status HTTP
+// Kode status HTTP terdiri dari tiga digit, dengan digit pertama menunjukkan kategori status:
+
+// 1xx: Informational
+// Memberikan informasi awal dan menunjukkan bahwa permintaan sedang diproses.
+
+// Contoh: 100 Continue, 101 Switching Protocols.
+// 2xx: Success
+// Menunjukkan bahwa permintaan berhasil diproses.
+
+// Contoh:
+// 200 OK: Permintaan berhasil diproses.
+// 201 Created: Sumber daya baru berhasil dibuat.
+// 204 No Content: Permintaan berhasil tanpa konten tambahan untuk dikirimkan.
+// 3xx: Redirection
+// Menunjukkan bahwa klien perlu melakukan tindakan tambahan, seperti diarahkan ke URL lain.
+
+// Contoh:
+// 301 Moved Permanently: URL telah dipindahkan secara permanen.
+// 302 Found: URL sementara diarahkan ke lokasi lain.
+// 304 Not Modified: Konten tidak berubah, klien bisa menggunakan versi cache.
+// 4xx: Client Error
+// Menunjukkan adanya kesalahan dari sisi klien.
+
+// Contoh:
+// 400 Bad Request: Permintaan tidak valid atau salah format.
+// 401 Unauthorized: Klien tidak memiliki izin untuk mengakses.
+// 403 Forbidden: Akses dilarang meskipun autentikasi berhasil.
+// 404 Not Found: Sumber daya yang diminta tidak ditemukan.
+// 5xx: Server Error
+// Menunjukkan adanya kesalahan di sisi server.
+
+// Contoh:
+// 500 Internal Server Error: Kesalahan umum pada server.
+// 501 Not Implemented: Server tidak mendukung fungsi yang diminta.
+// 503 Service Unavailable: Server tidak tersedia sementara.
+// 504 Gateway Timeout: Server tidak merespons tepat waktu.
