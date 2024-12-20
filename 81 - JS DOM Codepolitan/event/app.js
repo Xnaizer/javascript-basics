@@ -30,3 +30,26 @@ function stepDua() {
 
 // eventbtn.onclick = stepSatu;
 // eventbtn.onclick = stepDua;
+
+
+const button1 = document.querySelector('#changecolor')
+const container1 = document.querySelector('#container')
+
+button1.addEventListener('click', function(e) {
+	container1.style.backgroundColor = generateRandomColor();
+
+	e.stopPropagation();  // mencegah mengeksekusi event listerner lainnya jika tidak sesuai atau tidak diperlukan
+})
+
+container1.addEventListener('click', function() {
+	container1.classList.toggle('hide')
+})
+
+const generateRandomColor = () => {  // membuat fungsi generate random color
+	
+	const r = Math.floor(Math.random() * 255);
+	const g = Math.floor(Math.random() * 255);
+	const b = Math.floor(Math.random() * 255);
+
+	return `rgb(${r}, ${g}, ${b})`; // mengembalikan nilai r g b sehingga dapat digunakan random colornya
+};
