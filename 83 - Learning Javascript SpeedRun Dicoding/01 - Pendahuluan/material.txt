@@ -1,0 +1,1996 @@
+Apa Itu Pemrograman?
+
+Pemrograman adalah proses menyusun instruksi yang dapat dieksekusi oleh komputer. Ini mirip dengan memberikan panduan memasak, tetapi untuk komputer dalam bahasa yang dimengertinya, yaitu bahasa pemrograman.
+
+Dengan pemrograman, banyak masalah dapat diselesaikan, seperti:
+✅ Pemesanan tiket dan belanja online
+✅ Pembayaran digital
+✅ Pertemuan daring
+✅ Navigasi dengan aplikasi peta
+
+Semakin kompleks tugasnya, semakin banyak instruksi yang diperlukan. Namun, program tidak selalu rumit. Bahkan menampilkan teks sederhana seperti "Hello, world!" juga termasuk program.
+
+Scripting vs. Compiled Language
+Komputer hanya memahami bahasa mesin, sedangkan developer menulis kode dalam bahasa tingkat tinggi yang lebih mudah dipahami manusia. Agar kode ini bisa dijalankan, diperlukan proses penerjemahan ke bahasa mesin melalui dua mekanisme:
+
+1. Compiled Language
+Bahasa ini membutuhkan compiler untuk mengubah source code ke bahasa mesin sebelum dieksekusi. Contoh: Java, C++, Swift.
+
+2. Scripting Language
+Bahasa ini menggunakan interpreter, yang langsung menerjemahkan dan menjalankan kode tanpa proses kompilasi. Contoh: JavaScript, PHP, Python.
+
+JavaScript adalah salah satu scripting language yang sering digunakan, terutama dalam browser. Selanjutnya, kita akan mengenalnya lebih dalam! 🚀
+
+
+Pengenalan JavaScript
+JavaScript adalah bahasa pemrograman tingkat tinggi yang menggunakan interpreter, sehingga kode dieksekusi langsung oleh mesin baris per baris. Jika terjadi kesalahan, error akan muncul saat runtime.
+
+Awalnya, JavaScript digunakan untuk membuat website lebih interaktif dan dinamis, melengkapi HTML (struktur) dan CSS (styling). Namun, kini JavaScript berkembang pesat dan digunakan di berbagai platform, termasuk:
+✅ Browser (Frontend Development)
+✅ Server (Node.js, Bun)
+✅ Database (MongoDB)
+✅ Aplikasi Desktop & Mobile
+
+JavaScript adalah bahasa yang fleksibel dan kuat, menjadikannya salah satu yang paling populer di dunia pemrograman! 🚀
+
+
+
+Sejarah JavaScript
+JavaScript pertama kali dikembangkan oleh Brendan Eich di Netscape pada 1995 untuk membuat website lebih interaktif. Awalnya bernama LiveScript, kemudian diubah menjadi JavaScript demi strategi marketing, meskipun tidak terkait dengan Java.
+
+Pada 1997, JavaScript distandardisasi oleh ECMA menjadi ECMAScript (ES) untuk memastikan konsistensi penggunaannya di berbagai platform. Berikut perkembangan pentingnya:
+✅ ES3 (2000-2010) – JavaScript mulai mendominasi web.
+✅ ES4 (2008) – Gagal karena terlalu ambisius.
+✅ ES5 (2009) – Perbaikan fitur tanpa perubahan besar.
+✅ ES6 (2015) – Peningkatan besar, termasuk fitur modern seperti let/const, arrow function, class, dan lainnya.
+
+Sejak ES6, ECMAScript terus diperbarui setiap tahun. Dengan perkembangan JavaScript yang pesat, browser dan platform harus terus menyesuaikan agar tetap kompatibel dengan fitur-fitur terbaru.
+
+Selanjutnya, kita akan mengenal berbagai runtime JavaScript yang bisa menjalankan kode JS. Let's go!
+
+
+JavaScript Runtime Environment
+JavaScript kini bisa dijalankan di berbagai platform berkat runtime environment, yaitu tempat eksekusi program yang menentukan global object yang bisa diakses. Ada tiga runtime utama:
+
+1. Browser
+JavaScript di browser digunakan untuk membuat web interaktif. Kode dapat ditulis langsung di HTML dengan elemen <script> atau dalam file eksternal (.js). Browser memiliki global object window, yang memungkinkan manipulasi DOM dan interaksi pengguna. Kode bisa dijalankan melalui:
+✅ Embedded JavaScript (di dalam HTML)
+✅ External JavaScript (file terpisah)
+✅ REPL (Console Developer Tools)
+
+2. Node.js
+Node.js adalah runtime JavaScript yang berjalan di luar browser, digunakan untuk backend development. Node.js memiliki global object seperti process, yang memungkinkan akses ke file system, database, dan jaringan. Kode dijalankan dengan:
+✅ node app.js (menjalankan file JS)
+✅ node (masuk ke mode REPL)
+
+3. Bun
+Bun adalah alternatif baru untuk Node.js yang lebih cepat dan efisien. Sama seperti Node.js, Bun bisa menjalankan kode dengan:
+✅ bun run app.js atau bun app.js
+✅ bun repl (mode REPL)
+
+Meskipun ada beberapa runtime, semuanya tetap mengikuti standar ECMAScript, sehingga JavaScript bisa digunakan secara konsisten di berbagai platform. Saatnya mulai coding dan menjadi JavaScript developer yang andal! 🚀
+
+
+Expression dan Statement dalam JavaScript
+Pemrograman adalah cara kita memberi instruksi pada komputer agar menjalankan tugas tertentu. Dalam JavaScript, instruksi ini disebut statement, sedangkan bagian dari statement yang menghasilkan nilai disebut expression.
+
+Contoh:
+
+const age = 10; // Expression: 10
+const name = 'Dicoding'; // Expression: 'Dicoding'
+console.log(`Aku ${name}, umurku ${age} tahun.`); // Expression: `${name}, umurku ${age}`
+Statement bisa berisi satu atau lebih expression. Misalnya, 4 + 4 menghasilkan 8 dan "Dicoding" + " Indonesia" menghasilkan "Dicoding Indonesia".
+
+Memahami perbedaan ini sangat penting karena sering muncul dalam pesan error JavaScript saat debugging. 🚀
+
+
+Komentar dalam JavaScript
+Komentar adalah teks yang digunakan untuk memberi catatan dalam kode tanpa dieksekusi oleh interpreter. JavaScript mendukung dua jenis komentar:
+
+Single-line comment (//) → untuk komentar satu baris.
+
+
+// Ini adalah komentar
+console.log('Hai, Readers!'); // Komentar setelah kode
+Multi-line comment (/* */) → untuk komentar lebih dari satu baris.
+
+
+/*
+* TODO:
+* 1. Buat variabel PI dengan nilai 3.14
+* 2. Cetak nilai PI di console
+*/
+const PI = 3.14;
+console.log(PI);
+Gunakan komentar untuk memberi penjelasan dalam kode agar lebih mudah dipahami! 🚀
+
+
+
+Variabel dalam JavaScript
+Variabel adalah wadah untuk menyimpan nilai. JavaScript mendukung deklarasi variabel dengan const dan let:
+
+
+const id = 123; // Nilai tetap (tidak bisa diubah)
+let username = 'Dicoding'; // Nilai bisa diubah
+Perbedaan:
+
+const → Tidak bisa diubah setelah dideklarasikan.
+let → Bisa diubah setelah dideklarasikan.
+
+let name = 'Dicoding';
+name = 'dicodingacademy'; // Bisa diubah
+
+const pi = 3.14;
+pi = 3.1415; // ❌ Error: Assignment to constant variable.
+Aturan Penamaan Variabel
+✅ Boleh menggunakan huruf, angka, _, dan $.
+✅ Tidak boleh mengandung spasi, simbol selain _ dan $, atau diawali angka.
+✅ Tidak boleh memiliki nama yang sama dalam cakupan yang sama.
+
+Contoh benar:
+
+
+const firstName = 'Fulan';
+const last_name = 'Lestari';
+const $message = 'Hello!';
+Contoh salah:
+
+
+const first-name = 'Fulan'; // ❌ Tidak boleh menggunakan tanda -
+const 1stName = 'Fulan'; // ❌ Tidak boleh diawali angka
+Gunakan const jika nilainya tetap, dan let jika nilainya akan berubah! 🚀
+
+
+
+Tipe Data dalam JavaScript
+Tipe data adalah jenis nilai yang digunakan dalam pemrograman. JavaScript memiliki beberapa tipe data primitif:
+
+1. String
+Merepresentasikan teks, ditulis dengan ' ', " ", atau (template literals).
+
+
+const name = "Dicoding";
+const message = `Hello, ${name}!`; // Template literals
+Gunakan \n untuk baris baru jika tidak menggunakan backticks.
+
+2. Number
+Merepresentasikan angka, baik bilangan bulat maupun pecahan.
+
+
+const age = 25;
+const pi = 3.14;
+Memiliki nilai spesial:
+
+Infinity → hasil pembagian dengan nol (50 / 0 → Infinity).
+NaN → bukan angka (Number('abc') → NaN).
+3. Boolean
+Merepresentasikan true atau false, sering digunakan dalam perbandingan.
+
+
+const isLoggedIn = true;
+console.log(5 > 2); // true
+4. Nilai Kosong (null & undefined)
+null → Nilai kosong yang diberikan secara eksplisit.
+undefined → Variabel yang belum diinisialisasi.
+
+let data = null; // Nilai kosong yang jelas
+let value; // undefined (belum diberi nilai)
+Gunakan null untuk menyatakan nilai kosong secara eksplisit.
+
+Dengan memahami tipe data ini, Anda dapat mengelola data secara lebih efektif! 🚀
+
+
+
+Mengubah Nilai Antar Tipe Data dalam JavaScript
+Dalam JavaScript, konversi tipe data penting untuk menyesuaikan nilai dengan kebutuhan tertentu. Konversi ini bisa dilakukan secara eksplisit (dengan instruksi programmer) atau implisit (otomatis oleh JavaScript).
+
+Konversi Eksplisit
+Mengubah ke String
+
+Menggunakan String(value)
+Menggunakan value.toString()
+
+const num = 123;
+console.log(String(num)); // "123"
+console.log(num.toString()); // "123"
+Mengubah ke Number
+
+Number(value): Mengubah string atau boolean menjadi angka.
+parseInt(value): Mengubah string menjadi bilangan bulat.
+parseFloat(value): Mengubah string menjadi angka desimal.
+
+console.log(Number("123")); // 123
+console.log(parseInt("20cm")); // 20
+console.log(parseFloat("3.14px")); // 3.14
+Mengubah ke Boolean
+
+Boolean(value): Mengubah nilai ke true atau false.
+Truthy: Semua nilai kecuali falsy.
+Falsy: false, 0, "", null, undefined, NaN.
+
+console.log(Boolean(123)); // true
+console.log(Boolean("")); // false
+console.log(Boolean(null)); // false
+Konversi Implisit
+Terjadi otomatis dalam operasi tertentu:
+
+String + Number → String
+
+console.log("Umurku: " + 20); // "Umurku: 20"
+String * Number → Number
+
+console.log("123" * 2); // 246
+Boolean dalam operasi matematika
+
+console.log(1 + true); // 2 (true = 1)
+Memahami konversi ini membantu menghindari bug dan membuat kode lebih efisien. 🚀
+
+
+Operator dalam JavaScript
+Operator adalah simbol atau teks yang digunakan untuk melakukan operasi seperti aritmetika, penugasan, dan logika. Operand adalah nilai yang dikenai operasi.
+
+Jenis Operator Berdasarkan Operan
+Unary: Memerlukan satu operan, contoh: typeof age.
+Binary: Memerlukan dua operan, contoh: 5 + 4.
+Ternary: Memerlukan tiga operan, contoh: (age < 18) ? 'Too young' : 'Welcome!'.
+1. Assignment Operator
+Digunakan untuk memberikan nilai pada variabel.
+
+
+const name = 'Dicoding';  
+let location = 'Bandung';  
+location = 'Jakarta';
+2. Arithmetic Operator
+Digunakan untuk operasi matematika.
+
+
+6 + 5; // 11  
+7 - 2; // 5  
+8 * 5; // 40  
+10 / 3; // 3.33  
+10 % 2; // 0  
+2 ** 3; // 8  
+3. Comparison Operator
+Menghasilkan nilai boolean (true atau false).
+
+
+1 == '1'; // true  
+1 === '1'; // false  
+4 > 2; // true  
+4 <= 4; // true  
+4. Logical Operator
+Digunakan untuk operasi logika.
+
+
+true && false; // false  
+true || false; // true  
+!true; // false  
+5. String Operator
+Digunakan untuk menggabungkan string.
+
+
+const text = 'Hello' + ' World'; // 'Hello World'  
+Jika salah satu operan adalah string, + berfungsi sebagai penggabung string.
+
+Operator adalah dasar penting dalam JavaScript yang perlu dikuasai untuk pengembangan program.
+
+
+Pengertian Function dalam JavaScript
+Function adalah blok kode yang dapat digunakan kembali untuk menjalankan tugas tertentu. Dengan function, kita bisa menghindari penulisan kode yang berulang.
+
+Contoh kasus: konversi suhu dari Celsius ke Fahrenheit.
+
+Tanpa function, kita harus menulis ulang rumusnya setiap kali mengonversi nilai berbeda:
+
+
+let celsius = 50;
+let fahrenheit = 9 / 5 * celsius + 32;
+console.log(fahrenheit); // 122
+Jika ada banyak nilai yang perlu dikonversi, cara ini menjadi tidak efisien.
+
+Solusinya? Gunakan function!
+Function memungkinkan kita membungkus logika dalam satu tempat dan memanggilnya kapan saja dibutuhkan.
+
+Di materi selanjutnya, kita akan belajar cara membuat dan menggunakan function untuk menulis kode yang lebih bersih dan efisien. 🚀
+
+
+Deklarasi Function dalam JavaScript
+Function mirip dengan variabel, tetapi digunakan untuk menjalankan tugas tertentu. Untuk mendeklarasikan function, gunakan keyword function, diikuti nama function, parameter (jika ada), dan blok kode dalam {}.
+
+Contoh function untuk konversi suhu:
+
+
+function convertCelsiusToFahrenheit(temperature) {
+  const fahrenheit = (9 / 5) * temperature + 32;
+  console.log('Hasil konversi:', fahrenheit);
+}
+Namun, function ini tidak akan berjalan kecuali dipanggil. Bagaimana cara menjalankannya? Yuk, lanjut ke materi berikutnya! 🚀
+
+
+Pemanggilan Function dalam JavaScript
+Mendeklarasikan function saja tidak cukup, kita harus memanggilnya agar berjalan. Pemanggilan function dilakukan dengan menyebutkan namanya diikuti tanda ().
+
+Contoh:
+
+function convertCelsiusToFahrenheit(temperature) {
+  const fahrenheit = (9 / 5) * temperature + 32;
+  console.log('Hasil konversi:', fahrenheit);
+}
+
+const temperatureInCelsius = 90;
+convertCelsiusToFahrenheit(temperatureInCelsius); // Output: Hasil konversi: 194
+Function dapat dipanggil berulang kali tanpa harus menulis ulang kodenya, membuat program lebih efisien.
+
+Hoisting
+JavaScript memungkinkan pemanggilan function sebelum deklarasinya karena fitur hoisting.
+
+
+greetWorld(); // Output: Hello, world!
+
+function greetWorld() {
+  console.log('Hello, world!');
+}
+Namun, praktik ini sebaiknya dihindari untuk menjaga keterbacaan kode.
+
+Selanjutnya, kita akan membahas parameter dan argument dalam function! 🚀
+
+
+Parameter dan Argument dalam Function
+Parameter adalah variabel yang didefinisikan dalam parentheses saat mendeklarasikan function, sedangkan argument adalah nilai yang dikirim saat function dipanggil.
+
+Contoh:
+
+function convertCelsiusToFahrenheit(temperature) {
+  const fahrenheit = (9 / 5) * temperature + 32;
+  console.log('Hasil konversi:', fahrenheit);
+}
+
+convertCelsiusToFahrenheit(100); // Output: Hasil konversi: 212
+Default Parameter
+Jika function dipanggil tanpa argument, parameter akan bernilai undefined, yang bisa menyebabkan hasil NaN. Untuk mengatasinya, kita bisa menggunakan default parameter.
+
+Contoh:
+
+function convertCelsiusToFahrenheit(temperature = 50) {
+  const fahrenheit = (9 / 5) * temperature + 32;
+  console.log('Hasil konversi:', fahrenheit);
+}
+
+convertCelsiusToFahrenheit();    // Output: Hasil konversi: 122
+convertCelsiusToFahrenheit(90);  // Output: Hasil konversi: 194
+Selanjutnya, kita akan membahas return value dalam function! 🚀
+
+
+Return Value dalam Function
+Selain menerima input melalui parameter, function juga bisa mengembalikan nilai dengan return statement. Jika tidak ada return, function akan mengembalikan undefined.
+
+Contoh:
+
+function sumNumbers(a, b) {
+  return a + b;
+}
+
+const result = sumNumbers(2, 4);
+console.log('2 + 4:', result); // Output: 2 + 4: 6
+Perilaku return
+Program dalam function akan berhenti setelah mencapai return.
+Kode setelah return tidak akan dijalankan.
+Contoh:
+
+function greet() {
+  return 'Halo, dunia!';
+  console.log('Aku tidak akan tampil!');
+}
+
+console.log(greet()); // Output: Halo, dunia!
+Penerapan dalam konversi suhu:
+
+function convertCelsiusToFahrenheit(temperature) {
+  return (9 / 5) * temperature + 32;
+}
+
+console.log('Hasil konversi:', convertCelsiusToFahrenheit(90)); // Output: 194
+return membuat function lebih fleksibel dan memungkinkan hasilnya digunakan kembali! 🚀
+
+
+
+Function Expression dalam JavaScript
+Function Expression adalah cara menyimpan function dalam variabel, sehingga function menjadi sebuah nilai.
+
+Contoh:
+
+const convertCelsiusToFahrenheit = function (temperature) {
+  return (9 / 5) * temperature + 32;
+};
+
+console.log(convertCelsiusToFahrenheit(90)); // Output: 194
+🚨 Perbedaan utama: Function expression tidak mengalami hoisting, sehingga harus dideklarasikan sebelum digunakan.
+
+Function sebagai First-Class Citizen
+JavaScript memperlakukan function layaknya variabel, sehingga function bisa:
+✅ Disimpan dalam variabel
+✅ Dikirim sebagai parameter function lain
+✅ Dikembalikan dari function
+
+Contoh: Function sebagai parameter
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function calculate(operation, numA, numB) {
+  return operation(numA, numB);
+}
+
+console.log(calculate(multiply, 2, 4)); // Output: 8
+Contoh: Function mengembalikan function
+
+function multiplier(x) {
+  return function (num) {
+    return x * num;
+  };
+}
+
+const double = multiplier(2);
+console.log(double(10)); // Output: 20
+Dengan konsep ini, kita bisa membuat kode yang lebih fleksibel dan reusable! 🚀
+
+
+
+Arrow Function dalam JavaScript
+Arrow function adalah cara lebih ringkas dalam menuliskan function di JavaScript.
+
+Sintaks Dasar:
+
+
+const convertCelsiusToFahrenheit = (temperature) => {
+  return (9 / 5) * temperature + 32;
+};
+🚀 Lebih Ringkas:
+
+
+const convertCelsiusToFahrenheit = (temperature) => (9 / 5) * temperature + 32;
+✅ Keunggulan Arrow Function:
+
+Sintaks lebih singkat
+Tidak menggunakan function
+Menghilangkan {} dan return jika hanya satu baris kode
+🚨 Catatan:
+
+Arrow function tidak memiliki hoisting
+Selalu berupa function expression
+Tidak bisa digunakan sebagai constructor
+Dengan arrow function, kode menjadi lebih simpel dan mudah dibaca! 🚀
+
+
+Object dalam JavaScript
+Object adalah struktur data yang menyimpan pasangan key-value dan memungkinkan penyimpanan data yang kompleks. Object dikenal sebagai hash-table, map, atau dictionary di bahasa lain.
+
+Membuat Object
+Gunakan object literals ({}) untuk membuat object:
+
+
+const user = {};  
+const product = { name: 'Sepatu', price: 230000 };
+Key harus berupa string.
+Value bisa berupa tipe data apa pun (string, number, boolean, dll.).
+Object dapat menyimpan properti yang tidak terurut.
+Mengakses Properti Object
+1. Dot Notation (.)
+Cara paling umum untuk mengakses properti object:
+
+
+console.log(user.name); // Output: Dicoding
+❌ Tidak bisa digunakan jika key mengandung spasi.
+
+2. Square Bracket ([])
+Digunakan jika key memiliki spasi atau karakter khusus:
+
+
+console.log(user['last name']); // Output: Indonesia
+✅ Bisa digunakan untuk key yang tidak valid dalam dot notation.
+
+3. Object Destructuring
+Destructuring digunakan untuk mengekstrak nilai dari object dengan lebih ringkas:
+
+
+const { name, lastName, age = 9 } = user;
+console.log(name, lastName, age);
+✅ Default value bisa digunakan jika properti tidak ada.
+
+Mengubah & Menghapus Properti Object
+Mengubah Properti
+Mengubah nilai properti cukup menggunakan assignment operator (=):
+
+
+user.name = "Arsy";
+console.log(user.name); // Output: Arsy
+✅ Bisa dilakukan meskipun object dideklarasikan dengan const, karena hanya mengubah nilai propertinya, bukan mereassign object.
+
+Menghapus Properti
+Gunakan delete untuk menghapus properti dari object:
+
+
+delete user.age;
+console.log(user); // Output: { name: 'Dicoding', 'last name': 'Indonesia' }
+✅ Bisa menggunakan dot notation (.) atau square bracket ([]):
+
+
+delete user['age'];
+Kesimpulan
+Object menyimpan data dalam bentuk key-value.
+Properti object dapat diakses menggunakan dot notation, square bracket, atau destructuring.
+Object bisa diubah dan propertinya bisa dihapus dengan mudah.
+Object bukan tipe data primitif, sehingga dapat menyimpan data yang kompleks.
+🚀 Dengan memahami object, kamu dapat mengelola data lebih efektif di JavaScript!
+
+
+
+Menstrukturkan Data dengan Array
+Array adalah struktur data spesial yang menyimpan kumpulan data secara terurut. Berbeda dengan objek, data dalam array memiliki indeks dan dapat diakses menggunakan pola indeks.
+
+Membuat Array
+Object Constructor
+
+const users = new Array();
+const numbers = new Array(5);
+Array.from()
+
+const foo = Array.from('foo'); // ['f', 'o', 'o']
+Array Literal (Disarankan)
+
+const fruits = ['apple', 'banana', 'cherry'];
+Mengakses Element Array
+Indeks array dimulai dari 0.
+
+
+const myArray = [42, 55, 30];
+console.log(myArray[1]); // 55
+Mengakses indeks di luar ukuran array akan menghasilkan undefined.
+
+Manipulasi Array
+Mengubah Nilai
+
+myArray[1] = 10;
+Menambahkan Nilai (push)
+
+myArray.push(6);
+Menghapus Elemen
+delete myArray[1]; → Menghapus data tetapi indeks tetap ada.
+myArray.splice(1, 1); → Menghapus elemen beserta indeksnya.
+myArray.shift(); → Menghapus elemen pertama.
+myArray.pop(); → Menghapus elemen terakhir.
+Array Destructuring
+Mempermudah pengambilan nilai dari array.
+
+
+const [greeting, name] = ['Hello', 'Arsy'];
+console.log(greeting); // Hello
+Method Array Populer
+Reverse (Membalikkan Urutan Array)
+
+myArray.reverse();
+Sort (Mengurutkan Array Secara Default Ascending)
+
+myArray.sort();
+Array memiliki banyak metode lain untuk mempermudah pengolahan data dalam JavaScript! 🚀
+
+
+Menstrukturkan Data dengan Map
+Map adalah struktur data key-value seperti objek, tetapi lebih fleksibel karena key-nya bisa berupa tipe data apa saja.
+
+Membuat Map
+
+const map = new Map();
+const productMap = new Map([
+  ['shoes', 500],
+  ['cap', 350],
+  ['jeans', 250]
+]);
+console.log(productMap);
+Menyimpan & Mengakses Nilai di Map
+Gunakan .set(key, value) untuk menyimpan dan .get(key) untuk mengambil nilai.
+
+
+const map = new Map();
+map.set('name', 'aras');
+console.log(map.get('name')); // Output: aras
+map.set(1, 'number one');
+console.log(map.get(1)); // Output: number one
+Menghapus Nilai di Map
+Gunakan .delete(key), mengembalikan true jika berhasil dihapus, false jika tidak ditemukan.
+
+
+map.set('last name', 'opraza');
+map.delete('last name');
+console.log(map); // Map(1) { 'name' => 'aras' }
+Map lebih fleksibel dibanding objek karena dapat menggunakan key dengan berbagai tipe data. 🚀
+
+
+Menstrukturkan Data dengan Set
+Set adalah struktur data unik yang tidak memiliki key atau indeks, serta tidak menyimpan data duplikat.
+
+Membuat Set
+
+const set = new Set();
+const mySet = new Set([1, 2, 3]);
+console.log(mySet);
+Menyimpan Nilai di Set
+Gunakan .add(value), nilai duplikat tidak akan disimpan.
+
+
+const set = new Set();
+set.add(1);
+set.add('Apple');
+set.add(1);
+console.log(set); // Output: Set { 1, 'Apple' }
+Mengakses Nilai di Set
+Gunakan loop for...of atau .forEach().
+
+
+for (const value of set) {
+  console.log(value); // Output: 1, 'Apple'
+}
+
+set.forEach(value => console.log(value));
+Menghapus Nilai di Set
+Gunakan .delete(value), bukan berdasarkan indeks.
+
+
+set.delete(1);
+console.log(set); // Output: Set { 'Apple' }
+Set berguna untuk menyimpan data unik tanpa indeks atau key! 🚀
+
+
+Spread Operator
+Spread operator (...) digunakan untuk menyebarkan elemen dari array atau properti dari object, mempermudah pengelolaan data.
+
+Spread pada Object
+Menggabungkan atau menyalin object dengan mudah:
+
+
+const obj1 = { name: 'Dicoding' };
+const obj2 = { lastName: 'Indonesia', address: 'Jl. Batik Kumeli No 50' };
+const newObj = { ...obj1, ...obj2 };
+
+console.log(newObj); 
+// Output: { name: 'Dicoding', lastName: 'Indonesia', address: 'Jl. Batik Kumeli No 50' }
+Menyalin object tanpa mengubah aslinya:
+
+
+const originalObj = { name: 'Dicoding', age: 9 };
+const copiedObj = { ...originalObj };
+
+console.log(copiedObj); // Output: { name: 'Dicoding', age: 9 }
+Spread pada Array
+Menggabungkan atau menyalin array dengan mudah:
+
+
+const array1 = ['Dicoding'];
+const array2 = ['Indonesia', 'Jl. Batik Kumeli No 50'];
+const newArray = [...array1, ...array2];
+
+console.log(newArray); 
+// Output: ['Dicoding', 'Indonesia', 'Jl. Batik Kumeli No 50']
+Menyalin array:
+
+
+const original = ['apple', 'banana', 'cherry'];
+const copy = [...original];
+
+console.log(copy); // Output: ['apple', 'banana', 'cherry']
+Spread operator bekerja layaknya loop untuk menyalin atau menggabungkan data dengan lebih ringkas dan efisien. 🚀
+
+
+
+Rest Operator
+Rest operator (...) digunakan untuk menangani sejumlah argument dalam function atau menangkap sisa elemen dalam destructuring.
+
+Rest Parameter dalam Function
+Rest parameter mengumpulkan argument menjadi array, membuat kode lebih bersih dan mudah dikelola.
+
+
+function myFunc(...args) {
+  console.log(args); 
+}
+
+myFunc('one', 'two', 'three');
+// Output: ['one', 'two', 'three']
+Jika ada parameter lain sebelum rest parameter, hanya argument setelahnya yang masuk ke dalam array:
+
+
+function myFunc(number, ...args) {
+  console.log(number); // Output: 'one'
+  console.log(args);   // Output: ['two', 'three']
+}
+
+myFunc('one', 'two', 'three');
+Karena rest parameter adalah array, kita bisa menggunakan method seperti .length atau lainnya:
+
+
+function myFunc(...args) {
+  console.log(args.length); 
+}
+
+myFunc(1, 2, 3, 4); // Output: 4
+Rest Operator dalam Destructuring
+Digunakan untuk menangkap sisa elemen dalam array.
+
+
+const favorites = ['Nasi Goreng', 'Mie Goreng', 'Ayam Bakar', 'Tahu', 'Tempe'];
+const [first, second, ...rest] = favorites;
+
+console.log(first);  // Output: 'Nasi Goreng'
+console.log(second); // Output: 'Mie Goreng'
+console.log(rest);   // Output: ['Ayam Bakar', 'Tahu', 'Tempe']
+Rest operator membuat penulisan kode lebih fleksibel dan efisien! 🚀
+
+
+
+Contoh Kode 📌
+
+1. Array
+let arr = [1, 2, 3];
+console.log(arr[0]); // Akses elemen pertama
+arr.push(4); // Menambahkan di akhir
+arr.splice(1, 1); // Menghapus elemen ke-2
+console.log(arr.includes(2)); // Cek apakah ada angka 2
+
+2. Object
+let obj = { name: "Fulan", age: 30 };
+console.log(obj.name); // Akses
+obj.city = "Jakarta"; // Menambah properti baru
+delete obj.age; // Menghapus properti
+console.log("name" in obj); // Cek keberadaan key
+
+3. Set
+let mySet = new Set([1, 2, 3]);
+console.log(mySet.has(2)); // Cek keberadaan
+mySet.add(4); // Menambahkan elemen unik
+mySet.delete(3); // Menghapus elemen 3
+
+
+4. Map
+let myMap = new Map();
+myMap.set("name", "Fulan"); // Menambahkan
+console.log(myMap.get("name")); // Akses
+myMap.delete("name"); // Menghapus key "name"
+console.log(myMap.has("name")); // Cek apakah key ada
+
+
+Kesimpulan Penggunaan 🧐
+Gunakan Array jika membutuhkan daftar yang berurutan.
+Gunakan Object jika ingin menyimpan data dengan key-value, tetapi key harus string atau symbol.
+Gunakan Set jika butuh daftar nilai unik tanpa duplikat.
+Gunakan Map jika ingin menyimpan key-value dengan key yang bisa berupa tipe data apa saja dan mempertahankan urutan.
+Semoga bermanfaat! 🚀
+
+
+
+Pengantar: Bukan Sembarang Data
+“If you only have a hammer, you tend to see every problem as a nail.”
+— Abraham Maslow
+
+Dalam pemrograman, menyelesaikan masalah dengan pendekatan yang sama bisa jadi kurang efektif. Oleh karena itu, kita akan membahas berbagai struktur data di JavaScript agar lebih fleksibel dalam menyusun solusi.
+
+Objektif Pembelajaran
+Memahami kasus yang dapat ditangani oleh Object, Array, Map, dan Set.
+Menentukan struktur data yang tepat sesuai kebutuhan.
+Menggunakan Spread Operator untuk Object dan Array.
+Membuat, mengakses, dan memanipulasi struktur data secara efektif.
+Siap? Mari lanjut ke materi berikutnya!
+
+
+
+## Menstrukturkan Data dengan Object di JavaScript
+
+### 1. Apa itu Object?
+Object adalah struktur data berupa pasangan key-value yang dapat menyimpan berbagai tipe data secara tidak terurut. Dalam bahasa lain, dikenal sebagai hash-table, map, atau dictionary.
+
+### 2. Membuat Object
+- **Object Literals:**
+
+const user = {};
+const product = { name: 'Sepatu', price: 230000 };
+
+
+### 3. Mengakses Properti Object
+- **Dot Notation:**
+
+console.log(user.name); // Harus tanpa spasi
+
+- **Square Bracket:**
+
+console.log(user['last name']); // Bisa memuat spasi
+
+- **Object Destructuring:**
+
+const { name, age, isMale = false } = user;
+console.log(name, isMale);
+
+
+### 4. Mengubah Nilai Properti
+
+user.age = 30; // Bisa diubah meski dideklarasikan dengan const
+
+
+### 5. Menghapus Properti
+
+delete user.age;
+
+
+### Catatan:
+- Object menggunakan referensi, bukan nilai primitif.
+- Properti yang tidak ditemukan akan menghasilkan `undefined`.
+
+### Menstrukturkan Data dengan Array
+
+**Array** adalah struktur data khusus yang menyimpan kumpulan data secara terurut. Berbeda dengan objek yang tidak terurut, array memungkinkan pengaksesan data melalui indeks. Array dapat berisi berbagai tipe data seperti number, string, atau objek, dan bersifat dinamis.
+
+**Contoh:**
+
+const array = [1, 2, 3];
+console.log(typeof array); // Output: object
+
+
+### Membuat Array
+1. **Object Constructor:**
+
+const users = new Array(); // Array kosong
+const numbers = new Array(5); // Array dengan panjang 5
+
+
+2. **Array.from():**
+
+const foo = Array.from('foo'); // ['f', 'o', 'o']
+const users = ['John', 'Jane'];
+const customers = Array.from(users); // ['John', 'Jane']
+
+
+3. **Array Literal (disarankan):**
+
+const fruits = ['apple', 'banana', 'cherry'];
+
+
+### Mengakses Element Array
+Indeks array dimulai dari 0.
+
+const myArray = [42, 55, 30];
+console.log(myArray[1]); // 55
+
+Mengakses indeks di luar panjang array akan menghasilkan `undefined`.
+
+### Manipulasi Array
+**1. Mengubah dengan Indexing:**
+
+const arr = [1, 2, 3];
+arr[1] = 10; // [1, 10, 3]
+
+**2. Menambahkan dengan push():**
+
+arr.push(4); // [1, 10, 3, 4]
+
+
+### Menghapus Data Array
+**1. Dengan delete:**
+
+const arr = ['A', 'B', 'C'];
+delete arr[1]; // ['A', empty, 'C']
+
+**2. Dengan splice():**
+
+arr.splice(1, 1); // Menghapus 1 elemen mulai indeks 1: ['A', 'C']
+
+**3. Dengan shift() dan pop():**
+
+arr.shift(); // Menghapus elemen pertama
+arr.pop();   // Menghapus elemen terakhir
+
+
+### Array Destructuring
+
+const intro = ['Hello', 'Arsy'];
+const [greeting, name] = intro;
+console.log(greeting); // Hello
+
+
+### Array Method Populer
+1. **reverse():** Membalikkan urutan array.
+
+const arr = ['A', 'B', 'C'];
+arr.reverse(); // ['C', 'B', 'A']
+
+
+2. **sort():** Mengurutkan array secara default ascending.
+
+const arr = ['Web', 'Android', 'Data'];
+arr.sort(); // ['Android', 'Data', 'Web']
+
+
+Array merupakan alat penting dalam pengelolaan data di JavaScript dengan berbagai metode dan fleksibilitas yang tinggi.
+
+
+
+**Menstrukturkan Data dengan Set**
+
+**Apa itu Set?**
+Set adalah struktur data yang menyimpan nilai unik tanpa key atau indeks.
+
+**Membuat Set**
+
+const set = new Set(); // Set kosong
+const mySet = new Set([1, 2, 3]); // Set dengan nilai awal
+
+
+**Menambahkan Nilai**
+
+set.add(1);
+set.add('Apple');
+set.add(1); // Nilai duplikat diabaikan
+console.log(set); // Output: Set { 1, 'Apple' }
+
+
+**Mengakses Nilai**
+Gunakan perulangan:
+
+// Menggunakan for...of
+for (const value of set) {
+  console.log(value);
+}
+
+// Menggunakan forEach
+set.forEach(value => console.log(value));
+
+
+**Menghapus Nilai**
+
+set.delete(1);
+console.log(set); // Set { 'Apple' }
+
+
+**Catatan:** Set tidak memiliki indeks, jadi metode `delete()` menerima nilai, bukan indeksnya.
+
+
+
+### Spread Operator
+
+Spread operator (`...`) digunakan untuk menyebarkan elemen dalam object atau array. Fitur ini memudahkan penggabungan, penyalinan, dan manipulasi data dengan sintaks yang sederhana.
+
+#### **1. Spread pada Object**
+
+- **Menggabungkan Object**
+
+const obj1 = { name: 'Dicoding' };
+const obj2 = { lastName: 'Indonesia', address: 'Jl. Batik Kumeli No 50' };
+const mergedObj = { ...obj1, ...obj2 };
+
+console.log(mergedObj);
+// Output: { name: 'Dicoding', lastName: 'Indonesia', address: 'Jl. Batik Kumeli No 50' }
+
+
+- **Menyalin Object**
+
+const originalObj = { name: 'Dicoding', age: 9 };
+const copiedObj = { ...originalObj };
+
+console.log(copiedObj);
+// Output: { name: 'Dicoding', age: 9 }
+
+
+#### **2. Spread pada Array**
+
+- **Menggabungkan Array**
+
+const array1 = ['Dicoding'];
+const array2 = ['Indonesia', 'Jl. Batik Kumeli No 50'];
+const combinedArray = [...array1, ...array2];
+
+console.log(combinedArray);
+// Output: ['Dicoding', 'Indonesia', 'Jl. Batik Kumeli No 50']
+
+
+- **Menyalin Array**
+
+const original = ['apple', 'banana', 'cherry'];
+const copy = [...original];
+
+console.log(copy);
+// Output: ['apple', 'banana', 'cherry']
+
+
+**Catatan:** Spread operator bekerja dengan menyalin elemen yang dapat di-iterasi (iterable) dan memudahkan manipulasi data secara efisien.
+
+
+
+### Spread Operator
+
+Spread operator (`...`) digunakan untuk menyebarkan elemen dalam object atau array. Fitur ini memudahkan penggabungan, penyalinan, dan manipulasi data dengan sintaks yang sederhana.
+
+#### **1. Spread pada Object**
+
+- **Menggabungkan Object**
+
+const obj1 = { name: 'Dicoding' };
+const obj2 = { lastName: 'Indonesia', address: 'Jl. Batik Kumeli No 50' };
+const mergedObj = { ...obj1, ...obj2 };
+
+console.log(mergedObj);
+// Output: { name: 'Dicoding', lastName: 'Indonesia', address: 'Jl. Batik Kumeli No 50' }
+
+
+- **Menyalin Object**
+
+const originalObj = { name: 'Dicoding', age: 9 };
+const copiedObj = { ...originalObj };
+
+console.log(copiedObj);
+// Output: { name: 'Dicoding', age: 9 }
+
+
+#### **2. Spread pada Array**
+
+- **Menggabungkan Array**
+
+const array1 = ['Dicoding'];
+const array2 = ['Indonesia', 'Jl. Batik Kumeli No 50'];
+const combinedArray = [...array1, ...array2];
+
+console.log(combinedArray);
+// Output: ['Dicoding', 'Indonesia', 'Jl. Batik Kumeli No 50']
+
+
+- **Menyalin Array**
+
+const original = ['apple', 'banana', 'cherry'];
+const copy = [...original];
+
+console.log(copy);
+// Output: ['apple', 'banana', 'cherry']
+
+
+**Catatan:** Spread operator bekerja dengan menyalin elemen yang dapat di-iterasi (iterable) dan memudahkan manipulasi data secara efisien.
+
+
+Flow Control dalam JavaScript
+JavaScript menjalankan kode secara berurutan dari atas ke bawah (sekuensial). Contohnya:
+
+
+const number = 100;
+console.log(number);
+Komputer pertama-tama menginisialisasi variabel number, lalu mencetak nilainya ke konsol.
+
+Apa Itu Flow Control?
+Flow control adalah mekanisme pengaturan alur eksekusi program berdasarkan kondisi atau logika tertentu. Dengan flow control, program dapat:
+
+Menjalankan perintah secara dinamis
+Melakukan perulangan
+Menangani berbagai kondisi input
+Contoh di Aplikasi Nyata
+Dalam aplikasi pemesanan makanan, saat membuka aplikasi, Anda akan diminta untuk:
+
+Masuk jika sudah punya akun
+Daftar jika belum punya akun
+Aplikasi akan mengeksekusi kode sesuai pilihan Anda, misalnya:
+
+Masuk → Memverifikasi akun
+Daftar → Membuat akun baru
+Jenis Flow Control di JavaScript
+
+Conditional (percabangan)
+Looping (perulangan)
+Error handling (penanganan kesalahan)
+Materi selanjutnya akan membahas setiap bagian ini secara mendalam. Tetap semangat belajar! 🚀
+
+
+
+Conditional Flow di JavaScript
+Tidak semua kode dijalankan berurutan dari atas ke bawah. Program bisa memiliki jalur berbeda berdasarkan kondisi tertentu, disebut conditional flow.
+
+Contoh di Kehidupan Nyata:
+Saat lapar di mal, Anda memutuskan makan di restoran atau warung kaki lima berdasarkan kondisi keuangan Anda (sudah gajian atau belum).
+
+1. If Statement
+If statement menjalankan kode hanya jika kondisi terpenuhi.
+
+
+const gajian = true;
+
+console.log('Berjalan-jalan di mal');
+if (gajian) {
+  console.log('Makan di restoran mal');
+}
+console.log('Pulang ke rumah');
+Penjelasan:
+
+Jika gajian bernilai true, program menampilkan "Makan di restoran mal".
+Percabangan Tambahan:
+
+if-else: Mengeksekusi blok berbeda jika kondisi tidak terpenuhi.
+if-else if-else: Mengecek beberapa kondisi secara berurutan.
+Contoh:
+
+
+const score = 85;
+
+if (score > 90) {
+  console.log('A');
+} else if (score > 80) {
+  console.log('B');
+} else {
+  console.log('C');
+}
+Ternary Operator (Penulisan Singkat)
+
+
+const isMember = true;
+const discount = isMember ? 0.1 : 0;
+console.log(`Diskon: ${discount * 100}%`);
+2. Switch Case
+Switch case mengevaluasi nilai secara langsung dan cocok untuk banyak kondisi.
+
+Contoh:
+
+
+const fruit = 'apple';
+
+switch (fruit) {
+  case 'banana': console.log('Banana'); break;
+  case 'apple': console.log('Apple'); break;
+  case 'orange': console.log('Orange'); break;
+  default: console.log('Not a fruit');
+}
+Perbedaan dengan If-Else:
+
+Switch lebih rapi dan efisien untuk banyak kondisi.
+If-else cocok untuk kondisi kompleks.
+Perhatian pada Break:
+Jika lupa menulis break, program akan menjalankan case selanjutnya.
+
+
+const number = 2;
+
+switch (number) {
+  case 2: console.log('Ini 2');
+  case 3: console.log('Ini 3'); break;
+}
+Output:
+
+
+Ini 2
+Ini 3
+Karena tidak ada break di case 2, case 3 juga ikut dieksekusi.
+
+Kesimpulan:
+
+If-else: Cocok untuk sedikit kondisi.
+Switch: Cocok untuk banyak kondisi dengan nilai pasti.
+Ternary Operator: Ringkas untuk kondisi sederhana.
+Conditional flow membantu program lebih fleksibel dalam menyesuaikan perilaku berdasarkan kondisi tertentu.
+
+
+
+Looping di JavaScript
+
+Looping memungkinkan kita mengeksekusi kode berulang tanpa menulis berulang. Ada beberapa jenis perulangan di JavaScript:
+
+1. For Loop
+Struktur dasar:
+
+
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+Loop ini dimulai dari i = 0, akan berjalan selama i < 5, dan tiap iterasi i bertambah 1.
+
+2. For In (untuk objek)
+
+const person = { name: 'Fulan', age: 25 };
+for (const key in person) {
+  console.log(`${key}: ${person[key]}`);
+}
+3. For Of (untuk array atau iterable)
+
+const foods = ['Nasi', 'Sate', 'Bakso'];
+for (const food of foods) {
+  console.log(food);
+}
+4. While
+
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+Hati-hati! Jangan lupa menambah atau mengubah kondisi agar tidak terjadi infinite loop.
+
+5. Do-While
+
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 5);
+Kode di dalam do dijalankan setidaknya sekali meskipun kondisi false.
+
+Control Statement
+Break: Menghentikan loop.
+
+for (let i = 0; i < 10; i++) {
+  if (i === 5) break;
+  console.log(i);
+}
+// Mencetak 0–4 saja
+Continue: Melompati iterasi tertentu.
+
+for (let i = 0; i < 10; i++) {
+  if (i === 5) continue;
+  console.log(i);
+}
+// Mencetak 0–4, 6–9 (melewatkan 5)
+Looping mempermudah pekerjaan berulang dan lebih efisien daripada menulis kode secara manual! 🚀
+
+
+Error Handling di JavaScript
+
+Error handling mencegah crash pada program saat terjadi kesalahan, baik yang terduga (expected) maupun tidak terduga (unexpected).
+
+1. Throwing Error
+Gunakan throw untuk membangkitkan error jika kondisi tertentu terpenuhi.
+
+
+const price = 100;
+const paid = 80;
+if (paid < price) {
+  throw new Error('Pembayaran kurang');
+}
+2. Catching Error (Try-Catch)
+try digunakan untuk menjalankan kode yang berpotensi error, sementara catch menangkap error yang terjadi.
+
+
+try {
+  console.log('Memulai program');
+  throw new Error('Terjadi error!');
+} catch (err) {
+  console.error(err.message);
+}
+3. Finally
+Blok finally selalu dieksekusi, baik ada error maupun tidak.
+
+
+try {
+  console.log('Memulai');
+  throw new Error('Error!');
+} catch (err) {
+  console.log('Error tertangkap');
+} finally {
+  console.log('Selesai');
+}
+Kesimpulan:
+
+throw untuk memicu error.
+try-catch untuk menangani error.
+finally untuk menjalankan kode yang selalu dieksekusi.
+Error handling menjaga aplikasi tetap berjalan meskipun terjadi kesalahan. ✅
+
+
+Implementasi Flow Control di JavaScript
+Flow control mengendalikan jalannya program melalui perulangan, percabangan, dan penanganan error. Berikut implementasi sederhana untuk menentukan predikat nilai:
+
+
+function checkGrades(grades) {
+  for (let i = 0; i < grades.length; i++) {
+    if (typeof grades[i] !== 'number') {
+      throw new Error('Input harus berupa array angka.');
+    }
+
+    const grade = grades[i];
+    let predicate = grade >= 90 ? 'A' :
+                    grade >= 80 ? 'B' :
+                    grade >= 70 ? 'C' :
+                    grade >= 60 ? 'D' : 'E';
+
+    console.log(`Grade ${i + 1}: ${grade} (${predicate})`);
+  }
+}
+
+try {
+  const studentGrades = [95, 85, 65, 80, 70];
+  checkGrades(studentGrades);
+} catch (e) {
+  console.error(e.message);
+}
+Penjelasan:
+
+Perulangan: for digunakan untuk memproses setiap nilai dalam array.
+Percabangan: if digunakan untuk memvalidasi tipe data, dan ternary untuk menentukan predikat.
+Error Handling: throw memicu error jika input tidak valid, dan try-catch menangkap error tersebut.
+Program ini akan menampilkan predikat berdasarkan nilai yang diberikan, dan memunculkan error jika input bukan angka. ✅
+
+
+Mengenal Modularisasi
+
+Seiring bertambahnya fitur, kode program menjadi lebih kompleks. Untuk menjaga struktur dan keteraturan kode, kita dapat menerapkan modularisasi, yaitu memecah kode besar menjadi bagian-bagian kecil yang lebih sederhana dalam bentuk modul.
+
+Modul adalah berkas terpisah yang berisi fungsi, metode, atau variabel yang dapat digunakan kembali di bagian program lainnya melalui proses export dan import.
+
+Manfaat Modularisasi:
+
+Struktur kode lebih rapi dan jelas
+Memudahkan kolaborasi antar developer
+Kode lebih mudah dipahami
+Fungsi dapat digunakan kembali (reusable)
+JavaScript awalnya tidak mendukung modularisasi, namun sejak ECMAScript 2015 (ES6), kita bisa menggunakan import dan export untuk mengelola modul dengan lebih efisien.
+
+
+Mengenal import di JavaScript
+
+JavaScript memungkinkan penggunaan fungsi, metode, atau variabel dari modul lain dengan syarat:
+
+Modul telah di-export.
+Meng-import modul tersebut.
+🛠️ Jenis-jenis import:
+1️⃣ Default Import
+Mengimpor satu elemen default dari modul lain.
+
+
+// anotherfile.mjs
+export default function myFunction() {
+    console.log("Ini adalah function export default");
+}
+
+// main.mjs
+import myFunction from './anotherfile.mjs';
+myFunction(); // Output: Ini adalah function export default
+Nama saat import tidak harus sama dengan nama aslinya.
+Bisa menggunakan nama lain, misalnya:
+
+import result from './anotherfile.mjs';
+result(); // tetap memanggil myFunction
+2️⃣ Named Import
+Mengimpor elemen tertentu berdasarkan nama aslinya.
+
+
+// anotherfile.mjs
+export const name = "John";
+export const age = 25;
+
+// main.mjs
+import { name, age } from './anotherfile.mjs';
+console.log(name, age); // Output: John 25
+Harus menggunakan nama yang sama.
+Bisa mengimpor beberapa elemen sekaligus.
+3️⃣ Import Semua (*)
+Mengimpor semua elemen dari modul sekaligus.
+
+
+import * as data from './anotherfile.mjs';
+console.log(data.name, data.age);
+Lebih praktis jika modul memiliki banyak elemen.
+Namun, bisa mengurangi keterbacaan kode.
+4️⃣ Import Alias (as)
+Menggunakan alias untuk menghindari konflik nama.
+
+
+// user.mjs
+export function myFunction() { console.log("User function"); }
+
+// customer.mjs
+export function myFunction() { console.log("Customer function"); }
+
+// main.mjs
+import { myFunction as userFunction } from './user.mjs';
+import { myFunction as customerFunction } from './customer.mjs';
+
+userFunction(); // User function
+customerFunction(); // Customer function
+Berguna saat terdapat nama yang sama di beberapa modul.
+Membantu meningkatkan keterbacaan kode.
+💡 Tips Modularisasi
+Gunakan default import jika hanya satu elemen yang dibutuhkan.
+Gunakan named import untuk impor spesifik dan eksplisit.
+Hindari **import *** jika hanya membutuhkan beberapa elemen.
+Import alias efektif untuk mengatasi konflik nama.
+
+
+🛠️ Mengenal export di JavaScript
+Export digunakan untuk memungkinkan fungsi, metode, atau variabel diakses dari modul lain. Terdapat dua jenis export:
+
+1️⃣ Named Export
+Mengizinkan ekspor banyak elemen secara eksplisit.
+
+Ekspor langsung:
+
+export const name = 'John';
+export const email = 'john@gmail.com';
+export const age = 25;
+Ekspor setelah deklarasi:
+
+const name = 'John';
+const email = 'john@gmail.com';
+const age = 25;
+
+export { name, email, age };
+Cara impor di modul lain:
+
+import { name, email, age } from './user.mjs';
+console.log(name, email, age);
+Kelebihan:
+
+Dapat mengekspor banyak elemen.
+Nama variabel jelas dan eksplisit.
+Kekurangan:
+
+Harus menggunakan nama yang sama saat mengimpor.
+2️⃣ Default Export
+Mengekspor satu elemen utama tanpa memerlukan nama spesifik saat mengimpor.
+
+
+// anotherfile.mjs
+export default function sayHi() {
+  console.log("Hai, ini default export!");
+}
+Cara impor:
+
+
+import greet from './anotherfile.mjs';
+greet(); // Hai, ini default export!
+Kelebihan:
+
+Nama bisa diubah saat mengimpor.
+Ideal untuk mengekspor satu elemen utama.
+Kekurangan:
+
+Hanya bisa mengekspor satu default per modul.
+⚠️ Menggabungkan Named & Default Export (Tidak Disarankan)
+Meskipun memungkinkan, kombinasi ini kurang konsisten dan membingungkan.
+
+
+// anotherfile.mjs
+export default function sayHi() {
+  console.log("Hai, ini default export!");
+}
+export function sayGoodBye() {
+  console.log("Bye, ini named export!");
+}
+Cara impor:
+
+
+import sayHi, { sayGoodBye } from './anotherfile.mjs';
+sayHi();      // Hai, ini default export!
+sayGoodBye(); // Bye, ini named export!
+✅ Kesimpulan:
+Gunakan Named Export jika perlu mengekspor banyak elemen.
+Gunakan Default Export jika hanya ada satu elemen utama.
+Hindari menggabungkan keduanya demi menjaga konsistensi kode.
+
+
+🧩 Menggunakan Module di JavaScript
+Modularisasi membantu kode menjadi lebih terstruktur, mudah dikelola, dan modern. Berikut cara menggunakan modul di JavaScript.
+
+🚀 Mengekspor Data
+Ekspor Variabel:
+
+
+export const name = 'Dicoding';
+export const favoriteFood = ['pizza', 'pasta', 'sushi'];
+Ekspor Fungsi:
+
+
+export function sayHi(name) {
+  console.log(`Hi, ${name}!`);
+}
+Ekspor Sekaligus di Akhir Berkas:
+
+
+const name = 'John';
+const favoriteFood = ['pizza', 'pasta', 'sushi'];
+
+function sayHi(name) {
+  console.log(`Hi, ${name}!`);
+}
+
+export { name, favoriteFood, sayHi };
+📥 Mengimpor Data
+Named Import:
+
+
+import { name, favoriteFood } from './module.mjs';
+
+console.log(name);
+console.log(favoriteFood);
+Alias Import:
+
+
+import { name, favoriteFood as food } from './module.mjs';
+
+console.log(name);
+console.log(food);
+Mengimpor Fungsi:
+
+
+import { name, favoriteFood, sayHi } from './module.mjs';
+
+console.log(name);
+console.log(favoriteFood);
+sayHi(name);
+Import Semua Sekaligus:
+
+
+import * as user from './module.mjs';
+
+console.log(user.name);
+console.log(user.favoriteFood);
+user.sayHi(user.name);
+✅ Tips Modularisasi
+Gunakan Named Export jika ada banyak elemen yang diekspor.
+Gunakan Default Export jika hanya ada satu elemen utama.
+Impor dengan alias untuk menghindari konflik nama.
+Gunakan * hanya jika perlu mengimpor seluruh modul.
+
+
+🛠️ Menggunakan ESM di Node.js
+Node.js secara default menggunakan CommonJS, jadi kita perlu konfigurasi tambahan untuk menggunakan ES Modules (ESM). Berikut dua cara mudah untuk mengaktifkannya:
+
+1️⃣ Ubah Ekstensi Berkas
+Ganti ekstensi file dari .js menjadi .mjs.
+Node.js secara otomatis mengenali file dengan ekstensi .mjs sebagai ESM.
+Kelemahan:
+Jika proyek memiliki banyak file, mengubah satu per satu akan sangat merepotkan.
+
+2️⃣ Konfigurasi di package.json (Rekomendasi)
+Buka atau buat file package.json.
+Tambahkan baris berikut:
+
+{
+  "type": "module"
+}
+Dengan konfigurasi ini, semua file .js di proyek Anda bisa menggunakan import/export tanpa perlu mengubah ekstensi.
+Pilih cara yang sesuai dengan kebutuhan proyek Anda. 🚀💻
+
+
+
+🌐 Menggunakan ESM di Browser
+ESModules (ESM) kini bisa digunakan di browser untuk membantu Web Developer mengorganisir kode dengan lebih baik. Berikut caranya:
+
+1️⃣ Menggunakan ESM di Berkas Terpisah
+Tambahkan atribut type="module" pada tag <script>:
+
+
+<script src="./esmodule.js" type="module"></script>
+2️⃣ Menangani Browser Lama
+Gunakan nomodule untuk memuat fallback jika browser tidak mendukung ESM:
+
+
+<script nomodule src="fallback.js"></script>
+3️⃣ Menggunakan ESM secara Inline
+JavaScript ESM juga bisa langsung ditulis di dalam file HTML:
+
+
+<script type="module">
+  import App from "./app.js";
+  console.log(App);
+</script>
+Dengan modularisasi, kode menjadi lebih rapi dan mudah dikelola. 🎯🚀
+
+
+Paradigma Pemrograman
+Paradigma pemrograman adalah pendekatan dalam menulis program yang membantu menyelesaikan masalah secara optimal. Memahami berbagai paradigma penting karena setiap pendekatan menawarkan solusi unik, membuat kode lebih bersih, reusable, dan memudahkan kolaborasi.
+
+Misalnya, paradigma Object-Oriented Programming (OOP) memandang masalah melalui objek, mempermudah kerja tim dengan pedoman yang sama. Paradigma bukan aturan wajib, melainkan panduan untuk menulis kode dengan lebih efektif.
+
+Beberapa paradigma umum meliputi imperative, procedural, functional, dan object-oriented. Dalam modul ini, kita akan berfokus pada paradigma OOP.
+
+
+
+Paradigma Berbasis Objek (OOP)
+OOP (Object-Oriented Programming) adalah paradigma pemrograman berbasis objek, di mana objek saling berinteraksi untuk membentuk program. Objek merepresentasikan entitas nyata yang memiliki property (atribut) dan method (perilaku). Misalnya, objek kucing memiliki property seperti nama, warna, umur, dan method seperti berlari, makan, tidur.
+
+Untuk membuat banyak objek dengan ciri berbeda, kita bisa menggunakan class sebagai cetak biru pembuatan objek. OOP di JavaScript dapat dilakukan dengan dua cara:
+
+1. Constructor Function (Sebelum ES6)
+JavaScript adalah bahasa berbasis prototype, bukan class. Sebelum ES6, objek dibuat dengan constructor function:
+
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+Person.prototype.eat = function() {
+  console.log(`${this.name} is eating`);
+}
+
+const person1 = new Person('Alice', 30);
+person1.eat(); // Output: Alice is eating
+Catatan: Constructor function tidak bisa menggunakan arrow function dan diawali huruf besar untuk membedakan dari function biasa.
+
+2. ES6 Class (Modern)
+ES6 memperkenalkan sintaks class yang lebih mudah dipahami, terutama bagi pengguna Java, C++, dan C#.
+
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  eat() {
+    console.log(`${this.name} is eating`);
+  }
+}
+
+const person1 = new Person('Alice', 30);
+person1.eat(); // Output: Alice is eating
+Meskipun menggunakan class, JavaScript tetap berbasis prototype. Buktinya:
+
+
+console.log(typeof Person); // Output: function
+Class di JavaScript hanyalah syntactic sugar dari constructor function.
+
+Ke depannya, penggunaan sintaks class lebih disarankan untuk mempermudah penulisan dan pemahaman kode saat menerapkan OOP. Selanjutnya, kita akan membahas konsep fundamental OOP. Yuk, lanjut! 🚀
+
+
+
+Tonggak Utama OOP
+OOP mempermudah pengembangan program kompleks dengan mengelompokkan kode ke dalam object dan class, membuatnya lebih bersih, terstruktur, dan mudah digunakan kembali melalui konsep inheritance.
+
+OOP memiliki empat pilar utama:
+
+Encapsulation – Membatasi akses data dengan mengemasnya dalam objek.
+Inheritance – Pewarisan atribut dan metode dari satu class ke class lain.
+Polymorphism – Kemampuan objek memiliki banyak bentuk melalui metode yang sama.
+Abstraction – Menyembunyikan detail kompleks dan hanya menampilkan fitur penting.
+JavaScript mendukung tiga pilar utama (inheritance, encapsulation, polymorphism), namun fitur abstraction belum maksimal karena tidak memiliki abstract class secara bawaan.
+
+Selanjutnya, kita akan membahas pilar-pilar OOP lebih dalam. Yuk, lanjut! 🚀
+
+
+
+Inheritance dalam OOP
+Inheritance atau pewarisan adalah konsep di OOP yang memungkinkan sebuah class mewarisi property dan method dari class lain. Dengan inheritance, kita bisa mengurangi kode berulang dan membuat program lebih efisien.
+
+Struktur Inheritance
+
+class SuperClass { }
+
+class SubClass extends SuperClass { }
+SuperClass: Class induk (parent) yang mewariskan property dan method.
+SubClass: Class anak (child) yang mewarisi property dan method dari induknya.
+Contoh Penerapan
+Misalnya, kita punya perangkat smartphone dengan property dan method yang sama. Dengan inheritance, kita bisa buat satu class induk dan mewariskannya ke dua class anak seperti berikut:
+
+
+// Class Induk
+class SmartPhones {
+  constructor(color, brand, model) {
+    this.color = color;
+    this.brand = brand;
+    this.model = model;
+  }
+
+  charging() {
+    console.log(`Charging ${this.model}`);
+  }
+}
+
+// Class Anak
+class iOS extends SmartPhones {
+  airDrop() {
+    console.log('iOS memiliki fitur AirDrop');
+  }
+}
+
+class Android extends SmartPhones {
+  splitScreen() {
+    console.log('Android memiliki fitur Split Screen');
+  }
+}
+Dengan kode di atas, iOS dan Android bisa menggunakan semua property dan method dari SmartPhones, sekaligus menambahkan fitur khusus mereka masing-masing.
+
+Pewarisan dengan Prototype (Sebelum ES6)
+Sebelum ES6, inheritance menggunakan prototype inheritance, yang lebih rumit dan sulit dibaca:
+
+
+// Constructor Function
+function SmartPhones(color, brand, model) {
+  this.color = color;
+  this.brand = brand;
+  this.model = model;
+}
+
+SmartPhones.prototype.charging = function () {
+  console.log(`Charging ${this.model}`);
+};
+
+function iOS(color, brand, model) {
+  SmartPhones.call(this, color, brand, model);
+}
+
+iOS.prototype = Object.create(SmartPhones.prototype);
+iOS.prototype.constructor = iOS;
+
+iOS.prototype.airDrop = function () {
+  console.log('iOS memiliki fitur AirDrop');
+};
+Mengecek Pewarisan dengan instanceof
+Untuk memastikan apakah suatu object merupakan hasil turunan dari class tertentu, kita bisa menggunakan instanceof.
+
+
+const iphone = new iOS('Black', 'Apple', 'iPhone 14');
+console.log(iphone instanceof SmartPhones); // true
+console.log(iphone instanceof iOS); // true
+Kesimpulan
+Inheritance membantu kita menulis kode lebih efektif dengan mengurangi duplikasi. Dengan ES6 class, penerapan inheritance di JavaScript menjadi lebih sederhana dan mudah dipahami.
+
+
+
+Encapsulation dalam OOP
+Encapsulation adalah konsep dalam OOP yang membungkus data dan metode dalam sebuah class serta membatasi aksesnya dari luar. Prinsip utama encapsulation adalah menyembunyikan data yang tidak perlu diakses oleh object lain, mirip seperti mesin kopi yang memiliki komponen internal yang tidak dapat diakses langsung oleh pengguna.
+
+Properti dan Metode
+Dalam class, ada dua elemen utama: property dan method. Secara default, properti dapat diubah dari luar, yang berpotensi menimbulkan masalah. Lihat contoh berikut:
+
+
+class CoffeeMachine {
+  constructor(waterAmount) {
+    this.waterAmount = waterAmount;
+    this.temperature = 90;
+  }
+
+  makeCoffee() {
+    console.log(`Membuat kopi dengan suhu ${this.temperature}°C`);
+  }
+}
+
+const coffee = new CoffeeMachine(100);
+coffee.temperature = 60; // Suhu bisa diubah sembarangan
+coffee.makeCoffee(); // Output: Membuat kopi dengan suhu 60°C
+Untuk mencegah manipulasi sembarangan, kita bisa menggunakan getter, setter, dan akses private.
+
+Mencegah Perubahan dengan Getter dan Setter
+Getter dan setter memungkinkan kita mengontrol akses terhadap properti tertentu.
+
+
+class CoffeeMachine {
+  constructor(waterAmount) {
+    this.waterAmount = waterAmount;
+    this._temperature = 90; // underscore menandakan private (konvensi)
+  }
+
+  get temperature() {
+    return this._temperature;
+  }
+
+  set temperature(temp) {
+    console.log('Anda tidak diizinkan mengubah suhu!');
+  }
+
+  makeCoffee() {
+    console.log(`Membuat kopi dengan suhu ${this._temperature}°C`);
+  }
+}
+
+const coffee = new CoffeeMachine(100);
+console.log(coffee.temperature); // 90
+coffee.temperature = 100; // Tidak bisa diubah
+coffee.makeCoffee();
+Penggunaan tanda _ hanyalah kesepakatan di komunitas, bukan jaminan keamanan sebenarnya.
+
+Membuat Properti Benar-Benar Private
+Sejak JavaScript ES2022, kita bisa menggunakan tanda # untuk menjadikan properti benar-benar private.
+
+
+class CoffeeMachine {
+  #temperature = 90; // Properti private
+
+  constructor(waterAmount) {
+    this.waterAmount = waterAmount;
+  }
+
+  get temperature() {
+    return this.#temperature;
+  }
+
+  #defaultTemperature() {
+    return 90;
+  }
+
+  makeCoffee() {
+    console.log(`Membuat kopi dengan suhu ${this.#temperature}°C`);
+  }
+}
+
+const coffee = new CoffeeMachine(100);
+console.log(coffee.temperature); // 90
+coffee.temperature = 100; // Error: Private field '#temperature' not accessible
+Akses dengan tanda # memastikan bahwa properti dan metode hanya bisa diakses di dalam class.
+
+Kesimpulan
+Encapsulation menjaga data tetap aman dan terkontrol dengan menyembunyikan bagian-bagian penting melalui private field, getter, dan setter. Gunakan akses private secara default dan hanya buka akses jika memang dibutuhkan.
+
+
+
+**Polymorphism dan Overriding dalam JavaScript**
+
+**1. Polymorphism**
+Polymorphism memungkinkan SubClass mengubah implementasi method yang diwariskan dari SuperClass. Ini berguna saat kita ingin menyesuaikan perilaku method sesuai kebutuhan masing-masing SubClass.
+
+Contoh:
+
+class SmartPhones {
+  constructor(color, brand, model) {
+    this.color = color;
+    this.brand = brand;
+    this.model = model;
+  }
+
+  charging() {
+    console.log(`Charging ${this.model}`);
+  }
+}
+
+class Android extends SmartPhones {
+  charging() {
+    console.log(`Fast charging ${this.model}`);
+  }
+}
+
+const android = new Android('White', 'Samsung', 'Galaxy S21');
+android.charging(); // Fast charging Galaxy S21
+
+
+---
+
+**2. Overriding**
+Overriding memungkinkan kita mengubah implementasi constructor atau method di SubClass.
+
+### a. Overriding Constructor
+Jika SubClass membutuhkan properti tambahan, kita bisa melakukan overriding pada constructor dengan memanggil `super()`.
+
+
+class Android extends SmartPhones {
+  constructor(color, brand, model, device) {
+    super(color, brand, model);
+    this.device = device;
+  }
+}
+
+const android = new Android('White', 'Samsung', 'Galaxy S21', 'Smart TV');
+console.log(android.device); // Smart TV
+
+
+### b. Overriding Method
+Kita bisa menulis ulang method dari SuperClass di SubClass.
+
+
+class Android extends SmartPhones {
+  charging() {
+    super.charging();
+    console.log(`Fast charging ${this.model}`);
+  }
+}
+
+const android = new Android('White', 'Samsung', 'Galaxy S21');
+android.charging();
+/* Output:
+Charging Galaxy S21
+Fast charging Galaxy S21
+*/
+
+
+---
+**Kesimpulan:**
+- **Polymorphism**: Mengubah implementasi method yang diwariskan.
+- **Overriding**: Mengubah constructor atau method di SubClass.
+- **super()** digunakan untuk memanggil properti/method dari SuperClass.
+
+Polymorphism dan overriding memudahkan penyesuaian perilaku class sesuai kebutuhan aplikasi Anda.
+
+
+**Object Composition dalam JavaScript**
+
+Pewarisan dalam OOP memang mengurangi penulisan kode berulang, tetapi bisa menjadi kompleks pada kasus tertentu. Untuk mengatasinya, kita dapat menggunakan **Object Composition**.
+
+### Masalah dengan Pewarisan
+Misalnya, dalam game terdapat karakter Monster, Wizard, Guardian, dan Warrior. Setiap karakter memiliki kemampuan berbeda seperti **bergerak**, **menyerang**, **bertahan**, dan **mengeluarkan sihir**. Jika menggunakan pewarisan, kita akan berakhir dengan kode duplikat saat menambahkan kemampuan gabungan.
+
+### Solusi dengan Object Composition
+Object Composition memecah struktur kode berdasarkan kemampuan, bukan peran. Kita buat fungsi untuk setiap kemampuan:
+
+
+function canAttack(character) {
+  return {
+    attack: () => console.log(`${character.name} attacks with a weapon!`)
+  };
+}
+
+function canDefend(character) {
+  return {
+    defend: () => console.log(`${character.name} defends with a shield!`)
+  };
+}
+
+function canCastSpell(character) {
+  return {
+    castSpell: () => console.log(`${character.name} casts a spell!`)
+  };
+}
+
+
+### Membuat Karakter dengan Object Composition
+
+
+class Character {
+  constructor(name, health = 100, position = 0) {
+    this.name = name;
+    this.health = health;
+    this.position = position;
+  }
+
+  move() {
+    console.log(`${this.name} moves to another position!`);
+  }
+}
+
+
+Selanjutnya, kita buat object creator menggunakan `Object.assign()`:
+
+
+function createMonster(name) {
+  const character = new Character(name);
+  return Object.assign(character, canAttack(character));
+}
+
+function createGuardian(name) {
+  const character = new Character(name);
+  return Object.assign(character, canDefend(character));
+}
+
+function createWizard(name) {
+  const character = new Character(name);
+  return Object.assign(character, canCastSpell(character));
+}
+
+function createWarrior(name) {
+  const character = new Character(name);
+  return Object.assign(character, canAttack(character), canDefend(character));
+}
+
+
+### Pengujian
+
+
+const monster = createMonster('Monster');
+monster.move();
+monster.attack();
+
+const guardian = createGuardian('Guardian');
+guardian.move();
+guardian.defend();
+
+const wizard = createWizard('Wizard');
+wizard.move();
+wizard.castSpell();
+
+const warrior = createWarrior('Warrior');
+warrior.move();
+warrior.attack();
+warrior.defend();
+
+
+**Output:**
+
+Monster moves to another position!
+Monster attacks with a weapon!
+Guardian moves to another position!
+Guardian defends with a shield!
+Wizard moves to another position!
+Wizard casts a spell!
+Warrior moves to another position!
+Warrior attacks with a weapon!
+Warrior defends with a shield!
+
+
+### Kesimpulan
+Object Composition mempermudah penambahan kemampuan baru tanpa mengubah hierarki pewarisan. Dengan pendekatan berbasis kemampuan, kode menjadi lebih fleksibel dan mudah dikelola dalam pengembangan aplikasi yang kompleks.
+
+
