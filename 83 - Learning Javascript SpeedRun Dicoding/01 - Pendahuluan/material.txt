@@ -1994,3 +1994,354 @@ Warrior defends with a shield!
 Object Composition mempermudah penambahan kemampuan baru tanpa mengubah hierarki pewarisan. Dengan pendekatan berbasis kemampuan, kode menjadi lebih fleksibel dan mudah dikelola dalam pengembangan aplikasi yang kompleks.
 
 
+Pengenalan Functional Programming (FP)
+FP adalah paradigma pemrograman berbasis fungsi matematika murni yang menghasilkan output konsisten untuk input yang sama, tanpa mengubah data. FP memecah kode menjadi fungsi-fungsi kecil dan membangun program dengan gaya deklaratif: fokus pada what to solve dibandingkan how to solve.
+
+Perbedaan Imperatif vs Deklaratif:
+
+Imperatif (Cara Lama): Fokus pada langkah-langkah penyelesaian.
+
+const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+const newNames = [];
+for (let i = 0; i < names.length; i++) {
+  newNames.push(`${names[i]}!`);
+}
+console.log(newNames); // [ 'Harry!', 'Ron!', 'Jeff!', 'Thomas!' ]
+Deklaratif (FP): Fokus pada hasil akhir.
+
+const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+const newNames = names.map((name) => `${name}!`);
+console.log(newNames); // [ 'Harry!', 'Ron!', 'Jeff!', 'Thomas!' ]
+FP membuat kode lebih ringkas, mudah dibaca, dan terprediksi. Tantangan utama dalam mempelajari FP adalah mengubah pola pikir imperatif yang sudah umum digunakan. Namun, kita bisa memulainya secara bertahap dengan memahami konsep seperti pure functions, higher-order functions, recursion, dan immutability.
+
+
+
+Fungsi Sejati (Pure Function)
+Functional Programming (FP) menawarkan kode yang ringkas, mudah diuji, dan prediktif. Kunci utamanya adalah pure function, yaitu fungsi yang memiliki dua sifat:
+
+Output Konsisten
+Menghasilkan output yang sama jika diberi input yang sama, tanpa bergantung pada variabel global.
+
+Tanpa Efek Samping
+Tidak mengubah data di luar cakupan fungsi dan tidak melakukan operasi I/O secara langsung.
+
+Contoh Impure Function:
+
+
+let value = 0;
+function addWith(addingValue) {
+  value += addingValue; // Mengubah variabel global
+  console.log(`Current value: ${value}`); // Operasi I/O
+  return value;
+}
+Fungsi di atas tidak murni karena:
+
+Output berbeda meski input sama.
+Mengubah variabel global dan menulis ke console.
+Versi Pure Function:
+
+
+function addWith(value, addingValue) {
+  return value + addingValue;
+}
+console.log(addWith(0, 1)); // Selalu menghasilkan hasil yang sama
+Pada versi ini:
+
+Output hanya bergantung pada argumen.
+Tidak ada efek samping di luar fungsi.
+Contoh Lain Impure vs Pure:
+
+Impure	Pure
+Mengubah variabel global	Hanya menggunakan argumen
+Mengakses waktu sistem	Tidak bergantung waktu eksternal
+Mengubah properti objek luar	Mengembalikan objek baru
+Menulis ke berkas atau I/O	Mengembalikan hasil saja
+Keuntungan Pure Function:
+
+Kode lebih mudah diuji dan dioptimalkan (misalnya dengan memoization).
+Mengurangi potensi bug karena tidak ada perubahan di luar fungsi.
+Meskipun pure function penting dalam FP, JavaScript adalah bahasa multiparadigma. Tidak masalah menggunakan efek samping bila diperlukan, asalkan dikontrol dengan baik.
+
+
+
+# **High-Order Function (HOF) di JavaScript**
+
+**High-Order Function (HOF)** adalah fungsi yang menerima fungsi lain sebagai argumen, mengembalikan fungsi, atau keduanya. HOF memanfaatkan sifat *first-class citizen* pada JavaScript dan digunakan dalam berbagai kebutuhan, seperti:
+
+- Mengabstraksi aksi dalam proses asynchronous.
+- Membuat *utility function* seperti `.map()`, `.filter()`, `.reduce()`.
+- Menerapkan teknik *currying* dan *function composition*.
+
+### **Contoh HOF Sederhana**
+
+function apply(operation, ...args) {
+  return operation(...args);
+}
+
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+function discount(disc, value) {
+  return value - (disc / 100) * value;
+}
+
+const productPrice = apply(sum, 100, 100, 200);
+const withDiscount = apply(discount, 25, productPrice);
+
+console.log('Harga produk:', productPrice); // 400
+console.log('Setelah diskon 25%:', withDiscount); // 300
+
+> **Keunggulan**: Bisa mengubah logika operasi tanpa mengubah struktur fungsi utama.
+
+---
+
+### **Memoization dengan HOF** *(Caching Hasil Fungsi)*
+*Memoization* berguna untuk menghindari perhitungan berulang pada fungsi yang sama.
+
+function memoize(fn) {
+  const cache = new Map();
+  return function (...args) {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) return cache.get(key);
+    const result = fn(...args);
+    cache.set(key, result);
+    return result;
+  };
+}
+
+const slowSum = (n) => Array.from({ length: n }, (_, i) => i + 1).reduce((a, b) => a + b, 0);
+const memoizedSum = memoize(slowSum);
+
+console.time('First Call');
+console.log(memoizedSum(50000));
+console.timeEnd('First Call');
+
+console.time('Second Call');
+console.log(memoizedSum(50000));
+console.timeEnd('Second Call');
+
+> Pemanggilan kedua akan jauh lebih cepat karena menggunakan hasil cache.
+
+---
+
+### **Currying** *(Pemisahan Argumen Berlapis)*
+*Currying* membagi fungsi dengan banyak argumen menjadi fungsi berlapis.
+
+const adjectivfy = (adjective) => (noun) => `${noun} ${adjective}.`;
+const coolifier = adjectivfy('keren');
+
+console.log(coolifier('JavaScript')); // JavaScript keren.
+
+const multiply = (x) => (y) => x * y;
+const multiplyByFive = multiply(5);
+
+console.log(multiplyByFive(7)); // 35
+
+> **Keunggulan**: Reusabilitas dan fleksibilitas fungsi meningkat.
+
+---
+
+### **Function Composition** *(Menggabungkan Fungsi Kecil menjadi Kompleks)*
+*Function composition* menggabungkan dua atau lebih fungsi menjadi satu fungsi baru.
+
+const addOne = (x) => x + 1;
+const square = (x) => x * x;
+
+const compose = (f, g) => (x) => f(g(x));
+
+const addOneThenSquare = compose(square, addOne);
+console.log(addOneThenSquare(2)); // 9
+
+> Fungsi `addOneThenSquare` akan menambahkan 1 terlebih dahulu, lalu mengkuadratkan hasilnya.
+
+---
+
+### **HOF di Array JavaScript**
+JavaScript menyediakan berbagai metode bawaan berbasis HOF, seperti:
+
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map((num) => num * 2);
+console.log(doubled); // [2, 4, 6, 8]
+
+- `.map()`, `.filter()`, `.reduce()`, `.some()`, dan `.every()` memanfaatkan konsep HOF.
+
+### **Kesimpulan**
+HOF memungkinkan pembuatan kode yang lebih fleksibel, modular, dan mudah diuji. Anda mungkin sudah menggunakan HOF dalam berbagai metode array di JavaScript tanpa menyadarinya. Dengan memahami konsep ini, Anda bisa menulis kode yang lebih elegan dan efektif.
+
+
+Rekursi dalam Pemrograman Fungsional (FP)
+
+Dalam pemrograman fungsional, tidak ada perulangan menggunakan for atau while karena prinsip immutability melarang perubahan data, seperti counter pada loop. Sebagai gantinya, digunakan rekursi—teknik di mana sebuah fungsi memanggil dirinya sendiri hingga mencapai kondisi berhenti (base case).
+
+📍 Contoh Perulangan Imperatif (for loop)
+
+function generateArray(n) {
+  const result = [];
+  for (let i = 0; i <= n; i++) {
+    result.push(i);
+  }
+  return result;
+}
+console.log(generateArray(5)); // [0, 1, 2, 3, 4, 5]
+⚠️ Mengubah nilai i bertentangan dengan prinsip FP.
+
+🔄 Solusi dengan Rekursi (FP)
+
+function generateArray(n) {
+  if (n < 0) return [];
+  return [...generateArray(n - 1), n];
+}
+console.log(generateArray(5)); // [0, 1, 2, 3, 4, 5]
+✅ Tanpa mutasi data, hanya menghasilkan array baru di setiap pemanggilan.
+
+⚠️ Catatan Penting
+Base case penting untuk mencegah infinite recursion.
+JavaScript menyediakan metode berbasis FP seperti map, filter, dan forEach yang mengimplementasikan prinsip immutability secara internal.
+Rekursi memerlukan pola pikir berbeda dari pemrograman imperatif, namun sangat efektif untuk banyak kasus, terutama di lingkungan berbasis FP.
+
+
+
+🧠 Alur Rekursi secara Bertahap
+1️⃣ Pemanggilan Awal
+generateArray(5) dipanggil.
+Karena 5 >= 0, ia memanggil dirinya sendiri:
+
+[...generateArray(4), 5]
+Proses ini menunggu hasil dari generateArray(4).
+2️⃣ Pemanggilan Rekursif (Menuju Base Case)
+Fungsi terus memanggil dirinya sendiri dengan nilai n - 1 hingga mencapai base case (n < 0):
+
+generateArray(4) → [...generateArray(3), 4]
+generateArray(3) → [...generateArray(2), 3]
+generateArray(2) → [...generateArray(1), 2]
+generateArray(1) → [...generateArray(0), 1]
+generateArray(0) → [...generateArray(-1), 0]
+3️⃣ Mencapai Base Case
+Ketika generateArray(-1) dipanggil:
+
+n < 0 → Base Case tercapai.
+Fungsi mengembalikan array kosong: [].
+4️⃣ Proses Unwind (Kembali ke Atas)
+Setelah base case dikembalikan, hasilnya diproses dari pemanggilan paling dalam ke luar:
+
+generateArray(0):
+
+[...[], 0] → [0]
+generateArray(1):
+
+[...[0], 1] → [0, 1]
+generateArray(2):
+
+[...[0, 1], 2] → [0, 1, 2]
+generateArray(3):
+
+[...[0, 1, 2], 3] → [0, 1, 2, 3]
+generateArray(4):
+
+[...[0, 1, 2, 3], 4] → [0, 1, 2, 3, 4]
+generateArray(5):
+
+[...[0, 1, 2, 3, 4], 5] → [0, 1, 2, 3, 4, 5]
+✅ Penjelasan Intuitif
+Rekursi memecah masalah besar menjadi sub-masalah lebih kecil hingga mencapai base case.
+Setelah base case tercapai, fungsi mulai "naik" kembali, menyusun hasil akhir.
+Operator spread ... digunakan untuk menambahkan elemen baru di akhir array hasil rekursi sebelumnya.
+Hasil akhir: [0, 1, 2, 3, 4, 5] 🎯
+
+
+
+# Immutability dalam JavaScript
+
+## Konsep Immutability
+Immutability berarti nilai yang sudah dibuat tidak dapat diubah. Dalam JavaScript, prinsip ini penting untuk menjaga fungsi tetap pure dan mencegah bug akibat perubahan data yang tidak terduga.
+
+## Mutator Function (Mengubah Data)
+Berikut adalah metode array yang memodifikasi data asli:
+- `push()`, `pop()`, `shift()`, `unshift()`
+- `splice()`, `sort()`, `reverse()`
+- `Object.assign()`
+
+### Contoh Mutator Function:
+
+function max(arr) {
+  return arr.sort((a, b) => a - b).pop();
+}
+
+const numbers = [10, 23, 7];
+console.log(max(numbers)); // 23
+console.log(numbers); // [7, 10]
+
+**Masalah:** Array asli ikut berubah.
+
+## Solusi: Duplikasi Data
+Gunakan spread operator untuk menduplikasi data sebelum memodifikasi.
+
+### Perbaikan:
+
+function max(arr) {
+  return [...arr].sort((a, b) => a - b).pop();
+}
+
+console.log(max(numbers)); // 23
+console.log(numbers); // [10, 23, 7]
+
+
+## Immutable Array Methods
+1. **`map()`** – Membuat array baru dengan memetakan setiap elemen.
+   
+   const names = ['Harry', 'Ron'].map(name => `${name}!`);
+   console.log(names); // ['Harry!', 'Ron!']
+   
+2. **`filter()`** – Menyaring elemen sesuai kondisi.
+   
+   const numbers = [1, '', 2, 0].filter(Boolean);
+   console.log(numbers); // [1, 2]
+   
+3. **`reduce()`** – Menggabungkan nilai array menjadi satu nilai.
+   
+   const scores = [60, 90, 75];
+   const total = scores.reduce((acc, score) => acc + score, 0);
+   console.log(total); // 225
+   
+
+## Immutable Object
+Gunakan `Object.freeze()` untuk mencegah perubahan:
+
+const user = { name: 'John' };
+Object.freeze(user);
+user.name = 'Doe';
+console.log(user.name); // John
+
+
+### Deep Freeze (Rekursif):
+
+function deepFreeze(obj) {
+  Object.keys(obj).forEach(key => {
+    if (typeof obj[key] === 'object' && obj[key] !== null) {
+      deepFreeze(obj[key]);
+    }
+  });
+  return Object.freeze(obj);
+}
+
+const complexUser = {
+  name: 'Bob',
+  preferences: {
+    notifications: 'daily'
+  }
+};
+
+deepFreeze(complexUser);
+complexUser.preferences.notifications = 'weekly';
+console.log(complexUser.preferences.notifications); // daily
+
+
+**Kesimpulan:**
+- Hindari mutator function.
+- Gunakan spread operator untuk duplikasi.
+- Manfaatkan metode array seperti `map`, `filter`, dan `reduce`.
+- Bekukan objek dengan `Object.freeze()` untuk menjaga immutability.
+
+
+
