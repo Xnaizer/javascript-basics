@@ -1,0 +1,12 @@
+{
+  "name": "javascript-speedrun-dicoding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "latihan8_1.js",
+  "type": "module",
+  "scripts": {
+    "start": "node latihan8_1.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

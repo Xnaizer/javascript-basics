@@ -2345,3 +2345,984 @@ console.log(complexUser.preferences.notifications); // daily
 
 
 
+Asynchronous Process dalam Pemrograman
+
+Asynchronous process adalah operasi yang memungkinkan program menjalankan tugas lain sembari menunggu tugas sebelumnya selesai, tanpa harus memblokir proses berikutnya.
+
+Contoh:
+Saat mencuci baju dengan mesin cuci, kita bisa mengerjakan tugas lain, seperti mengelap dapur atau menyapu lantai. Begitu pula dalam pemrograman, operasi seperti network request, database query, dan file I/O dijalankan secara asinkron agar aplikasi tetap responsif.
+
+Perbedaan dengan Synchronous:
+
+Synchronous: Tugas dijalankan satu per satu secara berurutan.
+Asynchronous: Tugas dapat dieksekusi paralel tanpa menunggu tugas sebelumnya selesai.
+Pemahaman asynchronous penting dalam pengembangan aplikasi, terutama di JavaScript dan Node.js. Selanjutnya, kita akan mempelajari metode penanganannya lebih dalam.
+
+
+Simulasi Asynchronous Process di JavaScript
+Dalam pengembangan web, asynchronous process memungkinkan program menjalankan tugas lain sembari menunggu proses lain selesai. Salah satu cara sederhana untuk mensimulasikannya adalah dengan menggunakan setTimeout.
+
+Contoh:
+
+
+const estimationTime = 10000;
+
+setTimeout(() => {
+  console.log('Hello, world!');
+}, estimationTime);
+Kode di atas akan menampilkan "Hello, world!" setelah 10 detik.
+
+Asynchronous vs Ekspektasi
+Misalkan kita punya kode berikut:
+
+
+console.log('Saya memesan kopi di kafe.');
+
+setTimeout(() => {
+  console.log('Pramusaji sedang membuat kopi dalam 5 detik.');
+}, 5000);
+
+console.log('Pramusaji memberikan kopi pesanan.');
+console.log('Saya mendapatkan kopi dan menghabiskannya.');
+Ekspektasi Output:
+
+Saya memesan kopi di kafe.
+Pramusaji sedang membuat kopi dalam 5 detik.
+Pramusaji memberikan kopi pesanan.
+Saya mendapatkan kopi dan menghabiskannya.
+Realita Output:
+
+Saya memesan kopi di kafe.
+Pramusaji memberikan kopi pesanan.
+Saya mendapatkan kopi dan menghabiskannya.
+(Setelah 5 detik) Pramusaji sedang membuat kopi dalam 5 detik.
+Mengapa demikian?
+Karena setTimeout bersifat asinkron dan tidak memblokir eksekusi kode berikutnya. Proses pembuatan kopi berjalan di latar belakang, sementara kode lain tetap dieksekusi.
+
+Solusi:
+Untuk menangani urutan yang sesuai, kita bisa menggunakan callback atau Promise, yang akan dibahas di materi berikutnya.
+
+Penanganan Asynchronous dengan Callback
+Callback adalah fungsi yang dijadikan parameter dalam fungsi lain dan akan dijalankan setelah proses asinkron selesai. Contoh sederhana callback sudah terlihat pada penggunaan setTimeout.
+
+Implementasi Callback pada Proses Asinkron
+Misalkan kita ingin memesan kopi di kafe. Berikut contoh kodenya:
+
+
+main.mjs:
+
+
+import { makeCoffee, sendCoffee } from './coffee.mjs';
+
+console.log('Saya memesan kopi di kafe.');
+
+makeCoffee(() => {
+  sendCoffee(() => {
+    console.log('Pramusaji memberikan kopi pesanan.');
+    console.log('Saya menikmati kopi saya.');
+  });
+});
+coffee.mjs:
+
+
+export function makeCoffee(callback) {
+  console.log('Pramusaji sedang membuat kopi (5 detik)...');
+  setTimeout(() => {
+    console.log('Kopi selesai dibuat.');
+    callback();
+  }, 5000);
+}
+
+export function sendCoffee(callback) {
+  console.log('Pramusaji mengantarkan kopi (2 detik)...');
+  setTimeout(() => {
+    console.log('Kopi sudah sampai di meja.');
+    callback();
+  }, 2000);
+}
+Penjelasan Singkat
+makeCoffee: Membuat kopi dalam 5 detik.
+sendCoffee: Mengantar kopi dalam 2 detik.
+Callback memastikan urutan tugas asinkron tetap berjalan dengan benar.
+Output di Terminal
+
+Saya memesan kopi di kafe.
+Pramusaji sedang membuat kopi (5 detik)...
+
+(5 detik kemudian)
+Kopi selesai dibuat.
+Pramusaji mengantarkan kopi (2 detik)...
+
+(2 detik kemudian)
+Kopi sudah sampai di meja.
+Pramusaji memberikan kopi pesanan.
+Saya menikmati kopi saya.
+Perubahan & Perbaikan
+Kode lebih sederhana: Menghapus bagian yang tidak perlu seperti perhitungan waktu dalam detik.
+Struktur rapi: Logika tetap jelas meski lebih ringkas.
+Output lebih intuitif: Pengguna dapat memahami proses dengan mudah.
+Jika ada yang ingin didiskusikan lebih lanjut, beri tahu saja! 🚀☕
+
+
+
+Penanganan Error dengan Callback di JavaScript
+
+Dalam proses asynchronous, hasil yang diperoleh bisa berhasil atau gagal, seperti saat memesan kopi di kafe. Dalam pengembangan aplikasi, kegagalan bisa disebabkan oleh jaringan yang buruk, kesalahan kueri database, atau kesalahan membaca file sistem. Oleh karena itu, developer perlu mengantisipasi kedua kemungkinan tersebut.
+
+Contoh Callback pada Pemesanan Kopi
+Berikut adalah simulasi pemesanan kopi dengan callback:
+
+
+import { makeCoffee, sendCoffee } from './coffee.mjs';
+
+const order = 'Kopi Espresso';
+
+console.log(`Saya memesan ${order} di kafe.`);
+
+makeCoffee(order, (makeCoffeeError, makeCoffeeData) => {
+  if (makeCoffeeError) {
+    console.error(makeCoffeeError);
+    return;
+  }
+
+  sendCoffee(makeCoffeeData, (sendCoffeeError, sendCoffeeData) => {
+    if (sendCoffeeError) {
+      console.error(sendCoffeeError);
+      return;
+    }
+
+    console.log(`Pramusaji memberikan ${sendCoffeeData} pesanan.`);
+    console.log(`Saya mendapatkan ${sendCoffeeData} dan menghabiskannya.`);
+  });
+});
+Implementasi fungsi asinkron:
+
+
+export function makeCoffee(name, callback) {
+  const estimationTime = 5000;
+  console.log(`Pramusaji sedang membuat kopi, tunggu ${estimationTime / 1000} detik`);
+
+  setTimeout(() => {
+    const isSuccess = Math.random() > 0.3;
+    if (!isSuccess) {
+      callback(new Error('Gagal membuatkan kopi.'), null);
+      return;
+    }
+    console.log('Pramusaji selesai membuat kopi.');
+    callback(null, name);
+  }, estimationTime);
+}
+
+export function sendCoffee(name, callback) {
+  const estimationTime = 2000;
+  console.log('Pramusaji sedang mengantarkan kopi.');
+
+  setTimeout(() => {
+    const isSuccess = Math.random() > 0.3;
+    if (!isSuccess) {
+      callback(new Error('Gagal mengantarkan kopi.'), null);
+      return;
+    }
+    console.log('Pramusaji sudah sampai ke meja.');
+    callback(null, name);
+  }, estimationTime);
+}
+Hasil Output:
+
+Jika berhasil:
+Pramusaji memberikan Kopi Espresso pesanan.
+Saya mendapatkan Kopi Espresso dan menghabiskannya.
+
+Jika gagal:
+Error: Gagal membuatkan kopi. atau Error: Gagal mengantarkan kopi.
+
+Callback pada Node.js dengan fs
+Berikut adalah contoh penggunaan callback untuk membaca file:
+
+
+import { readFile } from 'fs';
+
+readFile('./sample.txt', (error, data) => {
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const greeting = data.toString()
+    .replace('%name%', 'Dicoding')
+    .replace('%your_name%', 'JavaScript');
+
+  console.log(greeting);
+});
+Isi sample.txt:
+Hello %name%, my name is %your_name%.
+
+Output:
+Hello Dicoding, my name is JavaScript.
+
+Kesimpulan
+Penanganan error dengan callback memungkinkan kita menangani proses asynchronous dengan menangkap error atau data keberhasilan. Namun, callback yang bersarang dapat menyebabkan "callback hell", yang akan kita perbaiki dengan metode Promise pada pembahasan berikutnya.
+
+
+Apa Itu Promise?
+Callback bukan satu-satunya cara menangani proses asynchronous. Meskipun berfungsi dengan baik, callback dapat menyebabkan callback hell, terutama jika suatu tugas bergantung pada banyak proses asynchronous.
+
+Contoh kode callback yang bersarang:
+
+
+makeCoffee(order, (makeCoffeeError, makeCoffeeData) => {
+  if (makeCoffeeError) {
+    console.log(makeCoffeeError);
+    return;
+  }
+ 
+  sendCoffee(makeCoffeeData, (sendCoffeeError, sendCoffeeData) => {
+    if (sendCoffeeError) {
+      console.log(sendCoffeeError);
+      return;
+    }
+ 
+    console.log(`Pramusaji memberikan ${sendCoffeeData} pesanan.`);
+    console.log(`Saya mendapatkan ${sendCoffeeData} dan menghabiskannya.`);
+  });
+});
+Semakin banyak proses yang saling bergantung, kode akan semakin sulit dibaca dan dipelihara. Untuk mengatasi masalah ini, JavaScript menghadirkan Promise.
+
+Apa Itu Promise?
+Promise adalah objek khusus yang mewakili keberhasilan atau kegagalan suatu proses asynchronous. Promise memiliki tiga state:
+
+Pending → Proses sedang berjalan.
+Fulfilled → Proses berhasil, mengembalikan hasil.
+Rejected → Proses gagal, mengembalikan alasan kegagalan.
+Ilustrasi Promise dalam Kehidupan Sehari-hari
+Bayangkan mesin cuci:
+
+Pending → Mesin cuci sedang mencuci.
+Fulfilled → Pakaian bersih dan siap dipakai.
+Rejected → Mesin gagal mencuci, misalnya karena tidak ada air atau sabun.
+Promise memastikan bahwa setiap proses akan diselesaikan, baik sukses maupun gagal. Sebagai developer, tugas kita adalah menangani hasilnya dengan logika yang sesuai.
+
+Selanjutnya, kita akan melihat implementasi Promise dalam kode! 🚀
+
+
+
+Penanganan dengan Promise
+Sebelumnya, kita sudah melihat bahwa callback dapat menyebabkan callback hell. Dengan Promise, kode menjadi lebih rapi dan mudah dipahami.
+
+Menggunakan Promise
+Contoh callback:
+
+
+doSomething((error, data) => {
+  if (error) {
+    console.log(error);
+    return;
+  }
+  console.log(data);
+});
+Dengan Promise, kode bisa disederhanakan:
+
+
+doSomething().then(onFulfilled, onRejected);
+
+function onFulfilled(data) {
+  console.log(data);
+}
+
+function onRejected(error) {
+  console.log(error);
+}
+Promise menggunakan method .then() untuk menangani hasil async:
+
+resolve → Memasuki kondisi fulfilled (berhasil).
+reject → Memasuki kondisi rejected (gagal).
+Contoh implementasi doSomething dengan Promise:
+
+
+function doSomething() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Memproses...');
+      Math.random() > 0.5 ? resolve('Sukses!') : reject(new Error('Gagal!'));
+    }, 2000);
+  });
+}
+Kunci utama:
+Jika resolve() dipanggil → .then() berjalan.
+Jika reject() dipanggil → .then() kedua atau .catch() berjalan.
+
+Chaining Promise
+Untuk menghindari callback hell, gunakan chaining.
+
+Contoh pemesanan kopi:
+
+
+makeCoffee(order)
+  .then((coffee) => sendCoffee(coffee))
+  .then((deliveredCoffee) => {
+    console.log(`Pramusaji memberikan ${deliveredCoffee}.`);
+    console.log(`Saya mendapatkan dan menghabiskannya.`);
+  })
+  .catch((error) => console.log(error.message));
+Chaining memungkinkan setiap .then() menerima hasil dari .then() sebelumnya. Jika terjadi error di salah satu proses, .catch() akan menangani.
+
+Hindari Callback Hell dengan Promise
+Hati-hati, jika Promise tidak dikembalikan (return), chaining tidak akan berfungsi:
+
+
+makeCoffee(order)
+  .then((coffee) => {
+    sendCoffee(coffee); // ⛔ Tidak mengembalikan Promise
+  })
+  .then((deliveredCoffee) => {
+    console.log(`Pramusaji memberikan ${deliveredCoffee}.`);
+  });
+Solusi: Pastikan selalu mengembalikan Promise!
+
+
+makeCoffee(order)
+  .then((coffee) => return sendCoffee(coffee)) // ✅ Mengembalikan Promise
+  .then((deliveredCoffee) => {
+    console.log(`Pramusaji memberikan ${deliveredCoffee}.`);
+  })
+  .catch((error) => console.log(error.message));
+Promise membantu menulis kode async yang lebih bersih dan mudah dipahami. Selanjutnya, kita akan membahas async-await untuk kode yang lebih ringkas! 🚀
+
+
+Tanpa Promise (Menggunakan Callback)
+Misalkan kita ingin membuat roti, lalu memanggangnya, dan menyajikannya.
+Jika menggunakan callback, kodenya bisa terlihat rumit:
+
+
+function buatRoti(callback) {
+  setTimeout(() => {
+    console.log("Roti sudah dibuat 🍞");
+    callback(null, "Roti");
+  }, 2000);
+}
+
+function panggangRoti(roti, callback) {
+  setTimeout(() => {
+    console.log(`${roti} sedang dipanggang... 🔥`);
+    callback(null, "Roti Panggang");
+  }, 2000);
+}
+
+function sajikanRoti(rotiPanggang, callback) {
+  setTimeout(() => {
+    console.log(`${rotiPanggang} siap disajikan! 🍽️`);
+  }, 1000);
+}
+
+// Callback Hell 😵
+buatRoti((err, roti) => {
+  if (err) return console.log(err);
+
+  panggangRoti(roti, (err, rotiPanggang) => {
+    if (err) return console.log(err);
+
+    sajikanRoti(rotiPanggang, (err) => {
+      if (err) return console.log(err);
+    });
+  });
+});
+❌ Masalah: Kode menjorok ke dalam, sulit dipahami.
+
+Dengan Promise (Lebih Rapi & Mudah Dipahami)
+Sekarang kita ubah ke Promise:
+
+
+function buatRoti() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Roti sudah dibuat 🍞");
+      resolve("Roti");
+    }, 2000);
+  });
+}
+
+function panggangRoti(roti) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`${roti} sedang dipanggang... 🔥`);
+      resolve("Roti Panggang");
+    }, 2000);
+  });
+}
+
+function sajikanRoti(rotiPanggang) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`${rotiPanggang} siap disajikan! 🍽️`);
+      resolve();
+    }, 1000);
+  });
+}
+
+// Menggunakan Chaining Promise ✅
+buatRoti()
+  .then((roti) => panggangRoti(roti))
+  .then((rotiPanggang) => sajikanRoti(rotiPanggang))
+  .catch((error) => console.log(error));
+✅ Keuntungan: Kode lebih rapi, mudah dibaca, dan tetap fleksibel!
+
+Sekarang, kalau kita ingin membuat kode yang lebih sederhana lagi, kita bisa gunakan async-await! 🚀
+
+
+
+
+Async-Await: Menjadikan Asynchronous Seperti Synchronous
+Dengan async-await, kita bisa menulis kode asynchronous dengan gaya synchronous yang lebih mudah dibaca dan dipahami.
+
+Tanpa Async-Await (Menggunakan Promise & then)
+
+import { doSomething } from './utils.mjs';
+
+console.log('Start.');
+
+doSomething().then((value) => {
+  console.log(value);
+});
+
+console.log('End.');
+
+/* Output:
+Start.
+End.
+You did it.
+*/
+❌ Masalah: "End." muncul sebelum proses asynchronous selesai.
+
+Dengan Async-Await (Lebih Terstruktur)
+
+import { doSomething } from './utils.mjs';
+
+async function main() {
+  console.log('Start.');
+
+  const result = await doSomething();
+  console.log(result);
+
+  console.log('End.');
+}
+
+main();
+
+/* Output:
+Start.
+You did it.
+End.
+*/
+✅ Keuntungan: Kode dibaca secara urut dari atas ke bawah.
+
+Penanganan Error dengan Try-Catch
+
+import { doSomething } from './utils.mjs';
+
+async function main() {
+  try {
+    console.log('Start.');
+
+    const result = await doSomething();
+    console.log(result);
+
+    console.log('End.');
+  } catch (error) {
+    console.log('Error:', error.message);
+  }
+}
+
+main();
+✅ Keuntungan: Error dari proses asynchronous langsung ditangani dalam catch.
+
+Bagaimana doSomething Bekerja?
+
+function promiseExecutor(resolve, reject) {
+  setTimeout(() => {
+    resolve('You did it!');
+  }, 2000);
+}
+
+export function doSomething() {
+  return new Promise(promiseExecutor);
+}
+Dengan async-await, kode kita lebih rapi, lebih mudah dibaca, dan lebih mudah dikelola. 🚀
+
+
+
+Concurrency dengan Promise
+Dalam kehidupan nyata, kita sering mengerjakan beberapa tugas secara bersamaan, misalnya:
+✅ Mencuci pakaian dengan mesin cuci.
+✅ Menyapu lantai dengan robot pembersih.
+✅ Membuat kopi secara manual.
+
+Di JavaScript, kita bisa menangani banyak proses asynchronous sekaligus menggunakan Promise.all dan Promise.allSettled.
+
+Promise.all: Gagal Jika Satu Gagal
+
+const promise1 = new Promise((resolve) => setTimeout(() => resolve(1), 1000));
+const promise2 = new Promise((_, reject) => setTimeout(() => reject(new Error('Ups!')), 2000));
+const promise3 = new Promise((resolve) => setTimeout(() => resolve(3), 3000));
+
+Promise.all([promise1, promise2, promise3])
+  .then((values) => console.log('Success:', values))
+  .catch((error) => console.log('Failed:', error.message));
+
+/* Output:
+Failed: Ups!
+*/
+❌ Masalah: Jika satu Promise gagal, semuanya gagal.
+
+Promise.allSettled: Tetap Berjalan Meski Ada yang Gagal
+
+Promise.allSettled([promise1, promise2, promise3])
+  .then((values) => console.log('Success:', values));
+
+/* Output:
+Success: [
+  { status: 'fulfilled', value: 1 },
+  { status: 'rejected', reason: Error: Ups! },
+  { status: 'fulfilled', value: 3 }
+]
+*/
+✅ Keuntungan: Semua Promise tetap diproses meskipun ada yang gagal.
+
+Kesimpulan
+Promise.all → Semua harus sukses, jika satu gagal, semuanya gagal.
+Promise.allSettled → Semua tetap berjalan, hasil tetap diterima meskipun ada yang gagal.
+Dengan ini, kita bisa menangani banyak proses asynchronous sekaligus dengan lebih fleksibel! 🚀
+
+
+
+🌦️ Contoh: Mengecek Prakiraan Cuaca dari Beberapa Kota Sekaligus
+📂 File weatherAPI.js
+
+export const WeatherAPI = {
+  async getWeather(city) {
+    try {
+      const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${city}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch weather for ${city}`);
+      }
+      const data = await response.json();
+      return `Weather in ${city}: ${data.current.condition.text}, ${data.current.temp_c}°C`;
+    } catch (error) {
+      throw new Error(`Error for ${city}: ${error.message}`);
+    }
+  },
+};
+📂 File checkWeather.js
+
+import { WeatherAPI } from './weatherAPI.js';
+
+const cities = ['Jakarta', 'Surabaya', 'Bandung', 'Bali'];
+
+async function getWeatherForCities(cities) {
+  try {
+    const results = await Promise.all(
+      cities.map(city => WeatherAPI.getWeather(city))
+    );
+    return results;
+  } catch (error) {
+    throw error;
+  }
+}
+
+getWeatherForCities(cities)
+  .then(console.log)
+  .catch(console.error);
+📝 Penjelasan:
+fetch(): Mengambil data cuaca dari API eksternal.
+async/await: Menunggu hasil pengambilan data secara asinkron.
+Promise.all(): Mengambil cuaca dari semua kota secara bersamaan.
+💡 Hasil Eksekusi (contoh):
+
+[
+  "Weather in Jakarta: Cloudy, 30°C",
+  "Weather in Surabaya: Sunny, 33°C",
+  "Weather in Bandung: Rainy, 22°C",
+  "Weather in Bali: Partly cloudy, 28°C"
+]
+Jika ada error (misalnya koneksi putus), langsung masuk ke blok .catch():
+
+
+Error for Surabaya: Failed to fetch weather for Surabaya
+✨ Implementasi Praktis: Bisa digunakan untuk dashboard cuaca, aplikasi perjalanan, atau peringatan cuaca real-time. 🚀☀️🌧️
+
+
+**Type System dalam JavaScript**
+
+Bahasa pemrograman memiliki sistem tipe data yang terbagi menjadi dua: **Static** dan **Dynamic**.
+- **Static:** Tipe data diperiksa saat compile. Contoh: Java, C++, Golang.
+- **Dynamic:** Tipe data diperiksa saat runtime. JavaScript termasuk kategori ini.
+
+**Contoh JavaScript (Dynamic):**
+
+let myNum = 0;
+myNum = true;
+console.log(myNum); // true
+
+JavaScript memungkinkan perubahan tipe data saat program berjalan (dynamic) tanpa deklarasi eksplisit.
+
+**Masalah pada Dynamic Type:**
+Bahasa dynamic memudahkan penulisan kode, namun lebih rentan error. Misalnya:
+
+function add(numA, numB) {
+  return numA + numB;
+}
+console.log(add('5', 4)); // '54' (string, bukan angka)
+
+JavaScript menggunakan **type coercion**, menyebabkan hasil tak terduga.
+
+**Kesimpulan:**
+- **Static Type:** Lebih aman, mencegah error sejak awal.
+- **Dynamic Type:** Fleksibel, tetapi rawan kesalahan saat runtime.
+
+Materi berikutnya akan membahas cara menangani error akibat dynamic type di JavaScript.
+
+
+
+Flow: Type Checker untuk JavaScript
+
+Flow adalah pustaka yang menambahkan pemeriksaan tipe (type check) pada kode JavaScript. Berbeda dengan JSDoc yang berbasis komentar, Flow langsung menambahkan static type annotations pada kode, sehingga membantu mendeteksi error lebih awal dan meningkatkan produktivitas.
+
+Contoh Penggunaan Flow
+
+// greet.js
+const myName: string = 'Flow';
+
+function greet(name: string) {
+  console.log(`Hello, ${name}. My name is ${myName}`);
+}
+
+greet(123); // Error: Tipe number tidak sesuai
+Di atas, Flow akan mengembalikan error karena parameter greet() seharusnya berupa string.
+
+Perbaikan Kode:
+
+greet('JavaScript'); // ✅ Benar, tipe sesuai
+Flow Compiler
+Kode dengan static type annotations tidak dapat langsung dijalankan oleh Node.js. Kita perlu menggunakan flow-remove-types untuk menghapus anotasi tipe sebelum menjalankan kode.
+
+Hasil setelah penghapusan anotasi:
+
+
+// greet.js (setelah penghapusan)
+const myName = 'Flow';
+
+function greet(name) {
+  console.log(`Hello, ${name}. My name is ${myName}`);
+}
+
+greet('JavaScript');
+// Output: Hello, JavaScript. My name is Flow
+Kesimpulan:
+Dengan Flow, kita dapat:
+✅ Mendeteksi error tipe lebih awal.
+✅ Meningkatkan kepercayaan diri saat menulis kode.
+✅ Memperbaiki kualitas kode secara keseluruhan.
+
+Selanjutnya, kita akan mempelajari alat type checker yang lebih populer dan merupakan superset dari JavaScript. Penasaran? Let’s find out! 😉🚀
+
+
+
+TypeScript: Superset dari JavaScript
+
+TypeScript adalah bahasa pemrograman yang dibangun di atas JavaScript dengan fitur static type checking, membuat kode lebih aman dan terstruktur. Dibuat oleh Microsoft, TypeScript menggabungkan fleksibilitas JavaScript dengan pemeriksaan tipe yang ketat, menjadikannya pilihan utama untuk proyek skala besar.
+
+Kenapa TypeScript?
+✅ Kompatibel sepenuhnya dengan JavaScript.
+✅ Dapat digunakan untuk proyek besar dengan kode yang lebih terstruktur.
+✅ Menjadi bahasa terfavorit di dunia (Survey Stack Overflow 2023).
+
+Contoh Kode TypeScript
+typescript
+Copy
+Edit
+// greet.ts
+const myName: string = 'TypeScript';
+
+function greet(name: string): void {
+  console.log(`Hello, ${name}. My name is ${myName}`);
+}
+
+greet('JavaScript');
+TypeScript Compiler (TSC)
+Untuk menjalankan TypeScript, kita memerlukan TypeScript Compiler (tsc). Compiler ini akan memeriksa tipe dan menghasilkan file .js yang siap dieksekusi.
+
+Hasil kompilasi:
+
+
+// greet.js
+const myName = 'TypeScript';
+
+function greet(name) {
+  console.log(`Hello, ${name}. My name is ${myName}`);
+}
+
+greet('JavaScript');
+// Output: Hello, JavaScript. My name is TypeScript
+TypeScript dengan Bun
+Berbeda dengan Node.js yang memerlukan kompilasi, Bun dapat mengeksekusi file TypeScript secara langsung.
+
+Contoh kode dengan Bun:
+
+typescript
+Copy
+Edit
+// add.ts
+function add(numA: number, numB: number): number {
+  return numA + numB;
+}
+
+const result = add(2, 4);
+console.log('Hasil:', result);
+// Output: Hasil: 6
+Kesimpulan
+Dengan mempelajari JSDoc, Flow, dan TypeScript, Anda kini memiliki berbagai pilihan alat untuk menambahkan static type pada proyek JavaScript.
+
+JSDoc: Dokumentasi berbasis komentar.
+Flow: Pemeriksaan tipe langsung pada kode.
+TypeScript: Superset JavaScript dengan compiler bawaan.
+Selamat berkarya dengan kode yang lebih aman, rapi, dan bebas bug! 🚀✨
+
+
+
+
+Style Guide dalam JavaScript
+Style guide adalah panduan penulisan kode yang bertujuan menjaga konsistensi dalam proyek. Konsistensi penting agar kode mudah dibaca, dipelajari, dan memudahkan kolaborasi antar-developer.
+
+Kenapa Style Guide Penting?
+🚫 Kode berantakan: Sulit dibaca dan dipahami.
+🤝 Kolaborasi sulit: Perbedaan gaya antar-developer.
+🧩 Onboarding lama: Developer baru kesulitan memahami kode.
+
+Contoh Kode Inkonsisten:
+
+let no = 'Semicolon'
+const my_favorite_color = '#112C85';
+let myNumber = 3;
+console.log(myNumber);
+var random = 1; // declaring random to 1
+if (foo) foo++;
+let a = b = c = 5;
+Kode di atas terasa tidak rapi dan membingungkan. Mari kita perbaiki sesuai style guide:
+
+✅ Kode Konsisten:
+
+const no = 'Semicolon';
+const myFavoriteColor = '#112C85';
+const myNumber = 3;
+console.log(myNumber);
+
+// Declaring random to 1
+const random = 1;
+
+if (foo) {
+  foo++;
+}
+
+let a = 5;
+let b = 5;
+let c = 5;
+Cara Menjaga Style Guide:
+Manual: Mengikuti dokumentasi style guide yang disepakati.
+Otomatis: Menggunakan tools seperti ESLint (dibahas selanjutnya).
+Menggunakan style guide bukan hanya soal estetika, tetapi menjaga kualitas kode, memudahkan kolaborasi, dan meningkatkan produktivitas. 🚀✨
+
+
+ode Convention dengan Linter Library
+Setelah memahami style guide secara manual, kini kita bahas metode otomatis menggunakan linter library, yang bertindak sebagai code reviewer.
+
+Apa Itu Linter?
+Linter adalah alat untuk memeriksa dan memberi umpan balik terkait kualitas kode. Beberapa linter populer untuk JavaScript:
+
+ESLint (paling populer, 35,6 juta unduhan/minggu)
+StandardJS
+JSHint
+Keunggulan ESLint:
+✅ Memberi peringatan atau error saat kode tidak sesuai aturan.
+✅ Dapat memperbaiki kode otomatis dengan perintah --fix.
+✅ Mendukung konfigurasi aturan (rules) sesuai kebutuhan.
+
+Contoh Konfigurasi ESLint:
+
+{
+  "rules": {
+    "no-duplicate-imports": "off", 
+    "no-use-before-define": "error", 
+    "constructor-super": "error", 
+    "no-var": "warn", 
+    "no-unreachable": "warn", 
+    "no-extra-boolean-cast": "warn"
+  }
+}
+Penjelasan Rule:
+
+Rule	Fungsi	Mode
+no-duplicate-imports	Mencegah impor module lebih dari sekali	Off (0)
+no-use-before-define	Larang penggunaan variabel sebelum dideklarasikan	Error (2)
+constructor-super	Wajib memanggil super() pada constructor turunan	Error (2)
+no-var	Anjurkan gunakan const atau let daripada var	Warn (1)
+no-unreachable	Peringatkan kode yang tidak bisa dijalankan	Warn (1)
+no-extra-boolean-cast	Hindari konversi boolean yang tidak perlu	Warn (1)
+Menjalankan ESLint:
+Untuk memeriksa kode:
+
+
+npx eslint src/main.js
+Untuk langsung memperbaiki kesalahan otomatis:
+
+
+npx eslint src/main.js --fix
+Gunakan ESLint sebagai asisten pribadi Anda! Dengan ini, Anda dapat menjaga kualitas kode, mempermudah kolaborasi, dan meningkatkan produktivitas. 🚀✨
+
+
+
+**Pengujian Program dalam JavaScript**
+
+Pengujian program adalah proses memastikan sistem berfungsi dengan benar untuk mencegah kegagalan saat digunakan end-user. Terdapat dua metode pengujian: **manual** dan **otomatis**.
+
+### 1. **Pengujian Manual**
+Metode ini dilakukan dengan menjalankan program dan memeriksa hasilnya secara langsung. Namun, pengujian manual cenderung rentan terhadap kesalahan manusia dan kurang efisien.
+
+**Contoh:**
+
+function calculateTotal(shoppingCart) {
+  return shoppingCart.reduce((acc, item) => {
+    if (typeof item.price === 'number') {
+      return acc + item.price;
+    } else {
+      console.error(`Invalid price type:`, item);
+      return acc;
+    }
+  }, 0);
+}
+
+Kode di atas menghitung total belanjaan dengan validasi tipe data, mencegah error akibat input tidak valid.
+
+---
+### 2. **Pengujian Otomatis (Unit Test)**
+Unit test adalah pengujian pada bagian terkecil program, seperti fungsi. Berbeda dengan pengujian manual, pengujian otomatis:
+- **Mendeteksi error lebih awal** sebelum aplikasi digunakan end-user.
+- **Menjaga kestabilan aplikasi** meskipun kode diperbarui.
+- **Lebih cepat dan efisien**, terutama pada proyek besar.
+
+**Contoh Framework:** Node.js atau Bun, yang memiliki module bawaan untuk pengujian otomatis.
+
+---
+### **Kesimpulan**
+Pengujian otomatis penting untuk meningkatkan efisiensi, mendeteksi error sejak dini, dan memastikan program tetap berfungsi meski terjadi perubahan kode. Pelajari lebih lanjut implementasi unit testing pada materi berikutnya.
+
+
+
+🎯 Rangkuman Singkat:
+Assertion	Deskripsi
+assert.equal()	Loose equality (==)
+assert.strictEqual()	Strict equality (===)
+assert.deepEqual()	Loose equality pada objek/array
+assert.deepStrictEqual()	Strict equality pada objek/array
+assert.notEqual()	Loose inequality (!=)
+assert.notStrictEqual()	Strict inequality (!==)
+assert.ok()	Memeriksa nilai truthy
+assert.throws()	Memeriksa apakah fungsi throw
+assert.doesNotThrow()	Memeriksa tidak adanya throw
+assert.rejects()	Async: Memeriksa Promise.reject()
+assert.doesNotReject()	Async: Memeriksa Promise.resolve()
+Mau contoh praktik lengkap atau latihan soal testing? 😊🚀
+
+
+Testing dengan Bun
+Bun sebagai runtime alternatif Node.js memiliki built-in module bun:test untuk pengujian, mirip dengan Jest. Bedanya, Bun menggunakan expect dengan matcher seperti .toBe, bukan assert seperti di Node.js.
+
+Contoh Implementasi:
+
+
+import { describe, it, expect } from 'bun:test';
+import { add } from './calculator.mjs';
+
+describe('Calculator', () => {
+  it('should add correctly', () => {
+    const actual = add(1, 1);
+    expect(actual).toBe(2);
+  });
+});
+Jalankan tes:
+
+
+bun test
+Hasil akan tampil langsung di terminal. Simple, kan? 🚀
+
+
+
+Strategi Terbaik dalam Menyusun Testing
+
+Untuk menghasilkan kode pengujian berkualitas, terapkan praktik terbaik berikut:
+
+1. Tentukan Konteks, Skenario, dan Ekspektasi
+Berikan deskripsi jelas pada describe dan it agar mudah dipahami, baik saat membaca kode maupun hasil pengujian.
+
+javascript
+Copy
+Edit
+import { it, describe, expect } from 'bun:test';
+
+describe('Fitur 1', () => {
+  it('harus menghasilkan A', () => {
+    expect('A').toBe('A');
+  });
+
+  it('tidak boleh menghasilkan A', () => {
+    expect('B').not.toBe('A');
+  });
+});
+2. Ikuti Pola AAA (Arrange, Action, Assert)
+Susun pengujian dengan pola AAA untuk keterbacaan yang lebih baik:
+
+Arrange: Persiapkan data atau kondisi awal.
+Action: Jalankan fungsi yang diuji.
+Assert: Periksa hasil dengan ekspektasi.
+javascript
+Copy
+Edit
+import { describe, it, expect } from 'bun:test';
+
+function add(a, b) {
+  return a + b;
+}
+
+describe('Calculator', () => {
+  it('should add numbers correctly', () => {
+    // Arrange
+    const numA = 1;
+    const numB = 1;
+
+    // Action
+    const result = add(numA, numB);
+
+    // Assert
+    expect(result).toBe(2);
+  });
+});
+3. Uji Skenario Positif dan Negatif (Edge Cases)
+Pastikan pengujian mencakup skenario umum (positif) dan kasus ekstrem (negatif):
+
+Skenario Positif: Fungsi bekerja sesuai harapan.
+Skenario Negatif: Tangani input yang tidak biasa atau tidak valid.
+javascript
+Copy
+Edit
+describe('add function', () => {
+  it('should return sum of numbers', () => {
+    expect(add(2, 3)).toBe(5);
+  });
+
+  it('should return NaN for non-number inputs', () => {
+    expect(add('2', '3')).toBeNaN();
+  });
+});
+Dengan mengikuti prinsip ini, pengujian akan lebih efektif, mudah dibaca, dan dapat diandalkan. 🚀
+
+
+
+
